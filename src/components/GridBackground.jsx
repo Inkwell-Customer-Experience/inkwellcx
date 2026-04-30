@@ -5,7 +5,11 @@ export default function GridBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     let animId = null;
 
     // Cache theme so we don't query the DOM every frame
@@ -22,7 +26,7 @@ export default function GridBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    const draw = (timestamp) => {
+    const draw = (timestamp = 0) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const spacing = 40;
       const cols = Math.ceil(canvas.width / spacing) + 1;
