@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import GridBackground from './components/GridBackground.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
@@ -41,6 +42,7 @@ function App() {
         </svg>
       </a>
       <SpeedInsights />
+      <Analytics />
     </BrowserRouter>
   );
 }
