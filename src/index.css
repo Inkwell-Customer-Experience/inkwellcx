@@ -43,6 +43,10 @@
   --surface-hover: #EAEEF2;
 }
 
+[data-theme="light"] body {
+  background-color: #F6F8FA;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -76,14 +80,6 @@ button {
 ::-webkit-scrollbar-track { background: var(--surface); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-/* ── DOT GRID BACKGROUND ── */
-.dot-grid {
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(rgba(31,111,235,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(31,111,235,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
 
 /* ── PAGE WRAPPER ── */
 .page-wrapper {
@@ -92,6 +88,8 @@ button {
   border-left: 0.5px solid var(--border);
   border-right: 0.5px solid var(--border);
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
   overflow-x: hidden;
 }
 

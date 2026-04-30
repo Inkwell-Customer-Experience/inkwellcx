@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import GridBackground from './components/GridBackground.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
@@ -11,7 +12,8 @@ import Contact from './pages/Contact.jsx';
 function App() {
   return (
     <BrowserRouter>
-      <div className="dot-grid" style={{ minHeight: '100vh' }}>
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+        <GridBackground />
         <div className="page-wrapper">
           <Navbar />
           <Routes>
