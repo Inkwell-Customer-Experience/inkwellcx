@@ -48,7 +48,7 @@ export default function Navbar() {
             }}
             aria-label="InkwellCX home"
           >
-            <img src="./InkWell1.png" alt="InkwellCX" style={{ height: 48, width: 'auto' }} />
+            <img src="/InkWell1.png" alt="InkwellCX" style={{ height: 48, width: 'auto' }} />
           </button>
 
           {/* Desktop nav */}

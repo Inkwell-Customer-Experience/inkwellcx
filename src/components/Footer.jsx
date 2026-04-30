@@ -19,7 +19,7 @@ export default function Footer() {
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                 aria-label="InkwellCX home"
               >
-                <img src="./InkWell1.png" alt="InkwellCX" style={{ height: 40, width: 'auto' }} />
+                <img src="/InkWell1.png" alt="InkwellCX" style={{ height: 40, width: 'auto' }} />
               </button>
             </div>
             <p className="footer-desc">
