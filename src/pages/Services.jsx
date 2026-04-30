@@ -79,7 +79,7 @@ export default function Services() {
       {/* Service detail cards */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: '1px solid #21262D', marginBottom: 0 }}>
+          <div className="hero-grid" style={{ gap: 0, border: '1px solid var(--border)', marginBottom: 0 }}>
             {[
               {
                 icon: '🎨',
@@ -110,17 +110,17 @@ export default function Services() {
                 key={i}
                 style={{
                   padding: '40px',
-                  borderRight: i === 0 ? '1px solid #21262D' : 'none',
-                  background: '#111820',
+                  borderRight: i === 0 ? '1px solid var(--border)' : 'none',
+                  background: 'var(--surface)',
                 }}
               >
                 <div className="icon-box" style={{ fontSize: 24, width: 48, height: 48 }}>{s.icon}</div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: '#E6EDF3', marginBottom: 12 }}>{s.title}</h2>
+                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: 'var(--text)', marginBottom: 12 }}>{s.title}</h2>
                 <p className="body-copy" style={{ marginBottom: 20 }}>{s.desc}</p>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24 }}>
                   {s.features.map((f) => (
-                    <li key={f} style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#7D8590', display: 'flex', gap: 10, alignItems: 'center' }}>
-                      <span style={{ color: '#3FB950' }}>✓</span> {f}
+                    <li key={f} style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)', display: 'flex', gap: 10, alignItems: 'center' }}>
+                      <span style={{ color: 'var(--green)' }}>✓</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -129,7 +129,7 @@ export default function Services() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, border: '1px solid #21262D', borderTop: 'none', marginTop: 0 }}>
+          <div className="services-grid" style={{ borderTop: 'none', marginTop: 0 }}>
             {[
               { icon: '🔍', title: 'Website Audits', desc: 'A detailed teardown of your site — speed, conversions, SEO, UX, and more. You\'ll know exactly what\'s holding you back.', cta: 'Learn More →', path: '/audit' },
               { icon: '📈', title: 'SEO & Growth', desc: 'Sustainable organic growth through technical SEO, content strategy, and local search optimisation.', cta: 'Learn More →', path: '/seo' },
@@ -139,12 +139,12 @@ export default function Services() {
                 key={i}
                 style={{
                   padding: '32px',
-                  borderRight: i < 2 ? '1px solid #21262D' : 'none',
-                  background: '#111820',
+                  borderRight: i < 2 ? '1px solid var(--border)' : 'none',
+                  background: 'var(--surface)',
                 }}
               >
                 <div className="icon-box">{s.icon}</div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#E6EDF3', marginBottom: 10 }}>{s.title}</h3>
+                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: 'var(--text)', marginBottom: 10 }}>{s.title}</h3>
                 <p className="body-copy" style={{ fontSize: 11, marginBottom: 20 }}>{s.desc}</p>
                 <button className="btn-ghost" onClick={() => go(s.path)} style={{ fontSize: 11 }}>{s.cta}</button>
               </div>
@@ -160,14 +160,14 @@ export default function Services() {
           <h2 className="section-headline" style={{ marginBottom: 8 }}>Simple, transparent monthly retainers.</h2>
           <p className="body-copy" style={{ marginBottom: 40 }}>No surprise invoices. Everything you need to grow, for a fixed monthly fee.</p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+          <div className="pricing-grid">
             {pricingPlans.map((plan) => (
               <div className={`pricing-card ${plan.featured ? 'featured' : ''}`} key={plan.name}>
                 {plan.featured && <div className="featured-badge">Best Value</div>}
                 <div className="pricing-name">{plan.name}</div>
                 <div className="pricing-price">{plan.price}<span>{plan.period}</span></div>
                 <p className="pricing-desc">{plan.desc}</p>
-                <hr style={{ border: 'none', borderTop: '1px solid #21262D', margin: '0 0 20px' }} />
+                <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '0 0 20px' }} />
                 <ul className="pricing-features">
                   {plan.features.map((f) => <li key={f}>{f}</li>)}
                 </ul>
@@ -181,11 +181,11 @@ export default function Services() {
               </div>
             ))}
           </div>
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', textAlign: 'center', marginTop: 28 }}>
+          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', textAlign: 'center', marginTop: 28 }}>
             All plans include a free website audit to kick things off. Once-off builds available —{' '}
             <button
               onClick={() => go('/contact')}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#58A6FF', fontFamily: "'Space Mono', monospace", fontSize: 10 }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--blue-link)', fontFamily: "'Space Mono', monospace", fontSize: 10 }}
             >
               request a quote
             </button>.

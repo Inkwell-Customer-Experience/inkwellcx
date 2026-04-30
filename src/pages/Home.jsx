@@ -9,7 +9,7 @@ function BlueStar() {
         display: 'inline-block',
         width: 14,
         height: 14,
-        background: '#1F6FEB',
+        background: 'var(--accent)',
         clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
       }}
     />
@@ -65,7 +65,7 @@ export default function Home() {
       <section
         style={{
           padding: '80px 0 64px',
-          borderBottom: '1px solid #21262D',
+          borderBottom: '1px solid var(--border)',
           position: 'relative',
         }}
       >
@@ -158,7 +158,7 @@ export default function Home() {
       {/* ── THE DIFFERENCE ── */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'start' }}>
+          <div className="hero-grid" style={{ gap: 60 }}>
             <div>
               <span className="page-tag">// the inkwellcx difference</span>
               <h2 className="section-headline" style={{ marginBottom: 16 }}>
@@ -176,9 +176,9 @@ export default function Home() {
                   { title: 'South Africa–based. Always reachable.', desc: 'Real people, real time zone. No outsourced support, no 3-day email threads.' },
                 ].map((item) => (
                   <div key={item.title} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                    <span style={{ color: '#3FB950', fontFamily: "'Space Mono', monospace", fontSize: 12, marginTop: 2, flexShrink: 0 }}>✓</span>
+                    <span style={{ color: 'var(--green)', fontFamily: "'Space Mono', monospace", fontSize: 12, marginTop: 2, flexShrink: 0 }}>✓</span>
                     <div>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#E6EDF3', marginBottom: 4 }}>{item.title}</div>
+                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: 'var(--text)', marginBottom: 4 }}>{item.title}</div>
                       <p className="body-copy" style={{ fontSize: 11 }}>{item.desc}</p>
                     </div>
                   </div>
@@ -220,16 +220,16 @@ export default function Home() {
           <h2 className="section-headline" style={{ marginBottom: 40 }}>
             Numbers that matter. Not vanity metrics.
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, border: '1px solid #21262D' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, border: '1px solid var(--border)' }}>
             {[
               { num: '3.4×', desc: 'Average conversion rate increase within 90 days of launch — across all active clients.', source: 'Avg. across InkwellCX client portfolio' },
               { num: '-62%', desc: 'Reduction in page load time after our performance optimisation. Faster sites rank better and convert more.', source: 'Avg. load time improvement on managed sites' },
               { num: '+218%', desc: 'Organic traffic growth in the first 6 months for clients on our SEO + management retainer.', source: 'Avg. 6-month organic traffic growth' },
             ].map((r, i) => (
-              <div key={i} style={{ padding: '36px 32px', borderRight: i < 2 ? '1px solid #21262D' : 'none' }}>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 48, color: '#1F6FEB', lineHeight: 1, marginBottom: 12 }}>{r.num}</div>
+              <div key={i} style={{ padding: '36px 32px', borderRight: i < 2 ? '1px solid var(--border)' : 'none' }}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 48, color: 'var(--accent)', lineHeight: 1, marginBottom: 12 }}>{r.num}</div>
                 <p className="body-copy" style={{ marginBottom: 16 }}>{r.desc}</p>
-                <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', fontStyle: 'italic' }}>{r.source}</p>
+                <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', fontStyle: 'italic' }}>{r.source}</p>
               </div>
             ))}
           </div>
@@ -267,7 +267,7 @@ export default function Home() {
               View All →
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid #21262D' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid var(--border)' }}>
             {[
               { title: 'WA Fourie Inc', meta: 'Law firm', url: 'https://onlymechris.github.io/Wa-Fourie/', link: 'Demo — WA Fourie Inc' },
               { title: 'Agrisilo', meta: 'Agriculture', url: 'https://onlymechris.github.io/agrisilo/', link: 'Demo — Agrisilo' },
@@ -275,15 +275,15 @@ export default function Home() {
               <div
                 key={i}
                 style={{
-                  borderRight: i === 0 ? '1px solid #21262D' : 'none',
-                  background: '#111820',
+                  borderRight: i === 0 ? '1px solid var(--border)' : 'none',
+                  background: 'var(--surface)',
                 }}
               >
                 <div
                   style={{
                     height: 200,
-                    background: '#0D1117',
-                    borderBottom: '1px solid #21262D',
+                    background: 'var(--bg)',
+                    borderBottom: '1px solid var(--border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -291,25 +291,25 @@ export default function Home() {
                   }}
                 >
                   {/* Mock browser frame */}
-                  <div style={{ width: '85%', height: '80%', background: '#161b22', borderRadius: 6, overflow: 'hidden' }}>
-                    <div style={{ height: 10, background: '#21262D', margin: '8px 8px 6px', borderRadius: 2 }} />
-                    <div style={{ background: '#0D1117', margin: '0 8px', borderRadius: 4, padding: '10px 10px' }}>
-                      <div style={{ height: 5, background: '#30363D', borderRadius: 2, marginBottom: 5, width: '70%' }} />
-                      <div style={{ height: 5, background: '#30363D', borderRadius: 2, marginBottom: 5, width: '50%' }} />
-                      <div style={{ height: 20, background: '#1F6FEB', borderRadius: 4, width: '40%', marginBottom: 8 }} />
+                  <div style={{ width: '85%', height: '80%', background: 'var(--surface)', borderRadius: 6, overflow: 'hidden' }}>
+                    <div style={{ height: 10, background: 'var(--border)', margin: '8px 8px 6px', borderRadius: 2 }} />
+                    <div style={{ background: 'var(--bg)', margin: '0 8px', borderRadius: 4, padding: '10px 10px' }}>
+                      <div style={{ height: 5, background: 'var(--border)', borderRadius: 2, marginBottom: 5, width: '70%' }} />
+                      <div style={{ height: 5, background: 'var(--border)', borderRadius: 2, marginBottom: 5, width: '50%' }} />
+                      <div style={{ height: 20, background: 'var(--accent)', borderRadius: 4, width: '40%', marginBottom: 8 }} />
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4, margin: '0 8px' }}>
-                      <div style={{ height: 30, background: '#0D1117', borderRadius: 3 }} />
-                      <div style={{ height: 30, background: '#0D1117', borderRadius: 3 }} />
-                      <div style={{ height: 30, background: '#0D1117', borderRadius: 3 }} />
+                      <div style={{ height: 30, background: 'var(--bg)', borderRadius: 3 }} />
+                      <div style={{ height: 30, background: 'var(--bg)', borderRadius: 3 }} />
+                      <div style={{ height: 30, background: 'var(--bg)', borderRadius: 3 }} />
                     </div>
                   </div>
                 </div>
                 <div style={{ padding: '20px 24px' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#E6EDF3', marginBottom: 4 }}>{work.title}</div>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', marginBottom: 8 }}>{work.meta}</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: 'var(--text)', marginBottom: 4 }}>{work.title}</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', marginBottom: 8 }}>{work.meta}</div>
                   <a href={work.url} target="_blank" rel="noopener noreferrer"
-                    style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#58A6FF', textDecoration: 'none' }}
+                    style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--blue-link)', textDecoration: 'none' }}
                   >
                     {work.link} →
                   </a>
@@ -372,7 +372,7 @@ export default function Home() {
                 💬 Chat on WhatsApp
               </a>
             </div>
-            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', marginTop: 20 }}>
+            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', marginTop: 20 }}>
               No credit card. No commitment. Just clarity.
             </p>
           </div>

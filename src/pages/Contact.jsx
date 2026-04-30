@@ -68,30 +68,30 @@ export default function Contact() {
 
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 80, alignItems: 'start' }}>
+          <div className="hero-grid" style={{ gridTemplateColumns: '1fr 1.3fr', gap: 80 }}>
             {/* Contact info */}
             <div>
               {contactInfo.map((item) => (
                 <div key={item.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 28 }}>
                   <div style={{
-                    width: 40, height: 40, background: '#111820',
-                    border: '1px solid #21262D', borderRadius: 6,
+                    width: 40, height: 40, background: 'var(--surface)',
+                    border: '1px solid var(--border)', borderRadius: 6,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 18, flexShrink: 0,
                   }}>{item.icon}</div>
                   <div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>{item.label}</div>
                     {item.href ? (
-                      <a href={item.href} style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: 15, color: '#E6EDF3', textDecoration: 'none' }}>{item.value}</a>
+                      <a href={item.href} style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: 15, color: 'var(--text)', textDecoration: 'none' }}>{item.value}</a>
                     ) : (
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: 15, color: '#E6EDF3' }}>{item.value}</div>
+                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: 15, color: 'var(--text)' }}>{item.value}</div>
                     )}
                   </div>
                 </div>
               ))}
 
-              <div style={{ marginTop: 36, background: '#111820', border: '1px solid #21262D', borderRadius: 6, padding: 28 }}>
-                <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#E6EDF3', marginBottom: 8 }}>Not sure what you need?</p>
+              <div style={{ marginTop: 36, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 6, padding: 28 }}>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: 'var(--text)', marginBottom: 8 }}>Not sure what you need?</p>
                 <p className="body-copy" style={{ fontSize: 11, marginBottom: 16 }}>
                   Request a free audit and we'll diagnose your site, identify the biggest opportunities,
                   and come back with a clear recommendation.
@@ -99,8 +99,8 @@ export default function Contact() {
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {['Free Audit', 'No Commitment', '48h Turnaround'].map((tag) => (
                     <span key={tag} style={{
-                      background: '#0D1117', border: '1px solid #21262D', borderRadius: 20,
-                      padding: '4px 12px', fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590',
+                      background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 20,
+                      padding: '4px 12px', fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)',
                     }}>{tag}</span>
                   ))}
                 </div>
@@ -108,14 +108,14 @@ export default function Contact() {
             </div>
 
             {/* Form */}
-            <div style={{ background: '#111820', border: '1px solid #21262D', borderRadius: 6, padding: 40 }}>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22, color: '#E6EDF3', marginBottom: 6 }}>Send us a message</h2>
+            <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 6, padding: 40 }}>
+              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22, color: 'var(--text)', marginBottom: 6 }}>Send us a message</h2>
               <p className="body-copy" style={{ fontSize: 11, marginBottom: 28 }}>We read every submission personally.</p>
 
               {status === 'success' ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 20, background: 'rgba(63,185,80,0.08)', border: '1px solid rgba(63,185,80,0.3)', borderRadius: 6 }}>
                   <span>✅</span>
-                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: '#3FB950' }}>
+                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: 'var(--green)' }}>
                     Message received! We'll be in touch within one business day.
                   </span>
                 </div>
@@ -194,7 +194,7 @@ export default function Contact() {
                 </form>
               )}
 
-              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', textAlign: 'center', marginTop: 16 }}>
+              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', textAlign: 'center', marginTop: 16 }}>
                 No spam. No sales calls without your permission. Just honest conversation.
               </p>
             </div>
