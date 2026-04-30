@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -24,10 +26,10 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        background: 'rgba(13,17,23,0.92)',
+        background: 'var(--navbar-bg)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid #21262D',
+        borderBottom: '1px solid var(--border)',
         boxShadow: scrolled ? '0 4px 40px rgba(0,0,0,0.4)' : 'none',
         transition: 'box-shadow 0.3s',
       }}
@@ -52,7 +54,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop nav */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} aria-label="Main navigation">
+          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 4 }} aria-label="Main navigation">
             {[
               { path: '/services', label: '/services' },
               { path: '/audit', label: '/audit' },
@@ -62,26 +64,15 @@ export default function Navbar() {
               <NavLink
                 key={path}
                 to={path}
-                style={({ isActive }) => ({
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: 11,
-                  color: isActive ? '#E6EDF3' : '#7D8590',
-                  letterSpacing: '0.08em',
-                  padding: '8px 12px',
-                  borderRadius: 4,
-                  transition: 'color 0.2s',
-                  textDecoration: 'none',
-                })}
-                onMouseEnter={e => { if (!e.currentTarget.classList.contains('active')) e.currentTarget.style.color = '#E6EDF3'; }}
-                onMouseLeave={e => { if (!e.currentTarget.getAttribute('aria-current')) e.currentTarget.style.color = '#7D8590'; }}
+                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
               >
                 {label}
               </NavLink>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {/* CTA + theme toggle + hamburger */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <button
               className="btn-primary"
               onClick={() => handleNav('/contact')}
@@ -89,10 +80,18 @@ export default function Navbar() {
             >
               → Let's Talk
             </button>
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
             {/* Hamburger */}
             <button
-              style={{ background: 'none', border: 'none', color: '#E6EDF3', fontSize: 22, cursor: 'pointer', display: 'none' }}
-              id="hamburger-btn"
+              className="hamburger-btn"
+              style={{ background: 'none', border: 'none', color: 'var(--text)', fontSize: 22, cursor: 'pointer' }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -106,8 +105,8 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           style={{
-            borderTop: '1px solid #21262D',
-            background: '#111820',
+            borderTop: '1px solid var(--border)',
+            background: 'var(--surface)',
             padding: '16px 0',
           }}
         >
@@ -130,7 +129,7 @@ export default function Navbar() {
                     cursor: 'pointer',
                     fontFamily: "'Space Mono', monospace",
                     fontSize: 12,
-                    color: '#7D8590',
+                    color: 'var(--muted)',
                     padding: '12px 16px',
                     borderRadius: 4,
                     textAlign: 'left',
@@ -144,13 +143,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          #hamburger-btn { display: block !important; }
-          nav { display: none !important; }
-        }
-      `}</style>
     </header>
   );
 }

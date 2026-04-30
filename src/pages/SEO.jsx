@@ -9,15 +9,15 @@ const seoPillars = [
 ];
 
 const chartBars = [
-  { h: 20, color: '#21262D' },
-  { h: 25, color: '#21262D' },
-  { h: 30, color: '#21262D' },
+  { h: 20, color: 'var(--border)' },
+  { h: 25, color: 'var(--border)' },
+  { h: 30, color: 'var(--border)' },
   { h: 38, color: 'rgba(31,111,235,0.4)' },
   { h: 48, color: 'rgba(31,111,235,0.5)' },
   { h: 60, color: 'rgba(31,111,235,0.6)' },
-  { h: 75, color: '#1F6FEB' },
-  { h: 90, color: '#3FB950' },
-  { h: 100, color: '#3FB950' },
+  { h: 75, color: 'var(--accent)' },
+  { h: 90, color: 'var(--green)' },
+  { h: 100, color: 'var(--green)' },
 ];
 
 export default function SEO() {
@@ -50,11 +50,11 @@ export default function SEO() {
       <section className="section">
         <div className="container">
           {/* Approach + chart */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'start', marginBottom: 64 }}>
+          <div className="hero-grid" style={{ gap: 60, marginBottom: 64 }}>
             <div>
               <span className="page-tag">// our seo approach</span>
               <h2 className="section-headline" style={{ marginBottom: 16 }}>
-                SEO that <span style={{ color: '#1F6FEB' }}>lasts</span>, not tricks that fade.
+                SEO that <span style={{ color: 'var(--accent)' }}>lasts</span>, not tricks that fade.
               </h2>
               <p className="body-copy" style={{ marginBottom: 16 }}>
                 We've seen businesses burned by agencies promising page-1 rankings in 30 days.
@@ -66,19 +66,19 @@ export default function SEO() {
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div className="card">
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 28, fontWeight: 700, color: '#1F6FEB', marginBottom: 4 }}>+218%</div>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>Avg. traffic growth in 6 months</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 28, fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>+218%</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>Avg. traffic growth in 6 months</div>
                 </div>
                 <div className="card">
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 28, fontWeight: 700, color: '#3FB950', marginBottom: 4 }}>4.2×</div>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>Avg. lead growth from organic</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 28, fontWeight: 700, color: 'var(--green)', marginBottom: 4 }}>4.2×</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>Avg. lead growth from organic</div>
                 </div>
               </div>
             </div>
 
             {/* Traffic chart */}
             <div className="card">
-              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#484F58', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 20 }}>
+              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted-dark)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 20 }}>
                 Organic Traffic Growth — Novex Property Group
               </p>
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 120, marginBottom: 16 }}>
@@ -94,12 +94,12 @@ export default function SEO() {
                   />
                 ))}
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>
                 {['Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'].map(m => <span key={m}>{m}</span>)}
               </div>
               <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span className="pulse-dot" />
-                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#7D8590' }}>
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)' }}>
                   +280% organic sessions since SEO programme started
                 </span>
               </div>
@@ -107,19 +107,19 @@ export default function SEO() {
           </div>
 
           {/* SEO pillars */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid #21262D', marginBottom: 64 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid var(--border)', marginBottom: 64 }}>
             {seoPillars.map((p, i) => (
               <div
                 key={p.title}
                 style={{
                   padding: '28px',
-                  borderRight: i % 2 === 0 ? '1px solid #21262D' : 'none',
-                  borderBottom: i < 2 ? '1px solid #21262D' : 'none',
-                  background: '#111820',
+                  borderRight: i % 2 === 0 ? '1px solid var(--border)' : 'none',
+                  borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
+                  background: 'var(--surface)',
                 }}
               >
                 <div className="icon-box">{p.icon}</div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#E6EDF3', marginBottom: 8 }}>{p.title}</h3>
+                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: 'var(--text)', marginBottom: 8 }}>{p.title}</h3>
                 <p className="body-copy" style={{ fontSize: 11 }}>{p.desc}</p>
               </div>
             ))}

@@ -38,7 +38,7 @@ export default function About() {
       <section className="section">
         <div className="container">
           {/* Story */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start', marginBottom: 64 }}>
+          <div className="hero-grid" style={{ gap: 80, marginBottom: 64 }}>
             <div>
               <span className="page-tag">// our story</span>
               <h2 className="section-headline" style={{ marginBottom: 20 }}>Built because agencies were letting businesses down.</h2>
@@ -60,30 +60,30 @@ export default function About() {
 
             <div>
               <div className="card" style={{ marginBottom: 20 }}>
-                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 600, fontStyle: 'italic', color: '#E6EDF3', lineHeight: 1.5, marginBottom: 20 }}>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 600, fontStyle: 'italic', color: 'var(--text)', lineHeight: 1.5, marginBottom: 20 }}>
                   "A website should be your hardest-working employee. It should sell, educate, and convert — 24 hours a day."
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{
                     width: 40, height: 40, borderRadius: '50%',
-                    background: '#1F6FEB33', border: '1px solid rgba(31,111,235,0.3)',
+                    background: 'var(--accent-faint)', border: '1px solid rgba(31,111,235,0.3)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700, color: '#1F6FEB'
+                    fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700, color: 'var(--accent)'
                   }}>IK</div>
                   <div>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#E6EDF3' }}>Inkwell Team</div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>InkwellCX Founders</div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: 'var(--text)' }}>Inkwell Team</div>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>InkwellCX Founders</div>
                   </div>
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32, color: '#1F6FEB', marginBottom: 4 }}>50+</div>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>Clients Served</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32, color: 'var(--accent)', marginBottom: 4 }}>50+</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>Clients Served</div>
                 </div>
                 <div className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32, color: '#3FB950', marginBottom: 4 }}>98%</div>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: '#7D8590' }}>Client Retention</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32, color: 'var(--green)', marginBottom: 4 }}>98%</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--muted)' }}>Client Retention</div>
                 </div>
               </div>
             </div>
@@ -92,19 +92,19 @@ export default function About() {
           {/* Values */}
           <span className="page-tag">// our values</span>
           <h2 className="section-headline" style={{ marginBottom: 32 }}>How we work.</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid #21262D', marginBottom: 64 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid var(--border)', marginBottom: 64 }}>
             {values.map((v, i) => (
               <div
                 key={v.title}
                 style={{
                   padding: '28px',
-                  borderRight: i % 2 === 0 ? '1px solid #21262D' : 'none',
-                  borderBottom: i < 2 ? '1px solid #21262D' : 'none',
-                  background: '#111820',
+                  borderRight: i % 2 === 0 ? '1px solid var(--border)' : 'none',
+                  borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
+                  background: 'var(--surface)',
                 }}
               >
                 <div className="icon-box">{v.icon}</div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#E6EDF3', marginBottom: 8 }}>{v.title}</h3>
+                <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: 'var(--text)', marginBottom: 8 }}>{v.title}</h3>
                 <p className="body-copy" style={{ fontSize: 11 }}>{v.desc}</p>
               </div>
             ))}

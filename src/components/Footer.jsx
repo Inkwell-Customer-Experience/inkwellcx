@@ -29,17 +29,17 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: 10 }}>
               <a href="#" className="footer-links" aria-label="LinkedIn"
                 style={{
-                  width: 32, height: 32, background: '#111820', border: '1px solid #21262D',
+                  width: 32, height: 32, background: 'var(--surface)', border: '1px solid var(--border)',
                   borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#7D8590',
+                  fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)',
                   textDecoration: 'none',
                 }}
               >in</a>
               <a href="#" aria-label="Twitter"
                 style={{
-                  width: 32, height: 32, background: '#111820', border: '1px solid #21262D',
+                  width: 32, height: 32, background: 'var(--surface)', border: '1px solid var(--border)',
                   borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#7D8590',
+                  fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)',
                   textDecoration: 'none',
                 }}
               >𝕏</a>
@@ -73,7 +73,7 @@ export default function Footer() {
               <li><button onClick={() => go('/contact')} style={linkBtnStyle}>Request a Quote</button></li>
               <li>
                 <a href="https://wa.me/27710921755" target="_blank" rel="noopener noreferrer"
-                  style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#7D8590', textDecoration: 'none' }}
+                  style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)', textDecoration: 'none' }}
                 >WhatsApp Us</a>
               </li>
             </ul>
@@ -103,7 +103,7 @@ const linkBtnStyle = {
   cursor: 'pointer',
   fontFamily: "'Space Mono', monospace",
   fontSize: 11,
-  color: '#7D8590',
+  color: 'var(--muted)',
   padding: 0,
   textAlign: 'left',
   transition: 'color 0.2s',

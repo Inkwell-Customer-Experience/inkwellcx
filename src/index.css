@@ -18,12 +18,29 @@
   --accent-faint:#1F6FEB33;
   --green:       #3FB950;
   --blue-link:   #58A6FF;
+  --navbar-bg:   rgba(13,17,23,0.92);
+  --surface-hover: #151e28;
 
   --font-mono: 'Space Mono', monospace;
   --font-sans: 'Syne', sans-serif;
 
   --radius: 6px;
   --transition: 0.2s ease;
+}
+
+[data-theme="light"] {
+  --bg:          #F6F8FA;
+  --surface:     #FFFFFF;
+  --border:      #D0D7DE;
+  --text:        #1F2328;
+  --muted:       #656D76;
+  --muted-dark:  #6E7781;
+  --accent:      #0969DA;
+  --accent-faint:#0969DA33;
+  --green:       #1A7F37;
+  --blue-link:   #0969DA;
+  --navbar-bg:   rgba(246,248,250,0.92);
+  --surface-hover: #EAEEF2;
 }
 
 html {
@@ -75,6 +92,7 @@ button {
   border-left: 0.5px solid var(--border);
   border-right: 0.5px solid var(--border);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ── CONTAINER ── */
@@ -257,7 +275,7 @@ button {
 }
 
 .service-card:hover {
-  background: #151e28;
+  background: var(--surface-hover);
 }
 
 .service-card::before {
@@ -761,6 +779,59 @@ textarea.form-input {
   text-align: right;
 }
 
+/* ── HAMBURGER & DESKTOP NAV ── */
+.hamburger-btn {
+  display: none;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  transition: color var(--transition), border-color var(--transition);
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+/* ── HERO GRID ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── PRICING GRID ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -768,7 +839,11 @@ textarea.form-input {
 }
 
 @media (max-width: 768px) {
-  .services-grid { grid-template-columns: 1fr; }
+  .hamburger-btn { display: flex !important; }
+  .desktop-nav { display: none !important; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .services-grid { grid-template-columns: 1fr !important; }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .metrics-bar { grid-template-columns: repeat(2, 1fr); }
