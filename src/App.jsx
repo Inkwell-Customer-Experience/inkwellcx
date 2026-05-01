@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 const SpeedInsights = lazy(() => import('@vercel/speed-insights/react').then((mod) => ({ default: mod.SpeedInsights })));
 const Analytics = lazy(() => import('@vercel/analytics/react').then((mod) => ({ default: mod.Analytics })));
 const GridBackground = lazy(() => import('./components/GridBackground.jsx'));
-const Home = lazy(() => import('./pages/Home.jsx'));
+import Home from './pages/Home.jsx';
 const Services = lazy(() => import('./pages/Services.jsx'));
 const Audit = lazy(() => import('./pages/Audit.jsx'));
 const SEO = lazy(() => import('./pages/SEO.jsx'));
@@ -23,7 +23,7 @@ function App() {
         </Suspense>
         <div className="page-wrapper">
           <Navbar />
-          <Suspense fallback={null}>
+          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
