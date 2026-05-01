@@ -910,7 +910,7 @@ textarea.form-input {
 /* ── PRICING GRID ── */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -918,6 +918,7 @@ textarea.form-input {
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -942,7 +943,7 @@ textarea.form-input {
 
 @media (max-width: 480px) {
   .process-grid { grid-template-columns: 1fr; }
-  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .btn-primary:not(.navbar-cta), .btn-ghost:not(.navbar-cta) { width: 100%; justify-content: center; }
 }
 
 /* ── PAGE TRANSITIONS ── */
@@ -951,6 +952,6 @@ textarea.form-input {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
