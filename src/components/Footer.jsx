@@ -25,9 +25,9 @@ export default function Footer() {
                 aria-label="InkwellCX home"
               >
                 {theme === 'dark' ? (
-                  <img src="/logo-dark.svg" alt="InkwellCX" style={{ height: 80, width: 'auto' }} />
+                  <img src="/logo-dark.svg" alt="InkwellCX" width={180} height={80} style={{ height: 80, width: 'auto' }} />
                 ) : (
-                  <img src="/logo-light.svg" alt="InkwellCX" style={{ height: 80, width: 'auto' }} />
+                  <img src="/logo-light.svg" alt="InkwellCX" width={180} height={80} style={{ height: 80, width: 'auto' }} />
                 )}
               </button>
             </div>
