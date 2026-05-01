@@ -9,7 +9,14 @@ export default function GridBackground() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    
+
+    // Mobile detection — tune performance
+    const isMobile = window.innerWidth < 768;
+    const SPACING = isMobile ? 80 : 40;       // 4x fewer dots on mobile
+    const MAX_FPS = isMobile ? 24 : 60;        // throttle on mobile
+    const FRAME_INTERVAL = 1000 / MAX_FPS;
+    let lastFrame = 0;
+
     let animId = null;
 
     // Cache theme so we don't query the DOM every frame
@@ -19,12 +26,6 @@ export default function GridBackground() {
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-
     let resizeTimer = null;
     const handleResize = () => {
       clearTimeout(resizeTimer);
@@ -33,13 +34,18 @@ export default function GridBackground() {
         canvas.height = window.innerHeight;
       }, 100);
     };
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     window.addEventListener('resize', handleResize);
 
     const draw = (timestamp = 0) => {
+      animId = requestAnimationFrame(draw);
+      if (timestamp - lastFrame < FRAME_INTERVAL) return;
+      lastFrame = timestamp;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const spacing = 40;
-      const cols = Math.ceil(canvas.width / spacing) + 1;
-      const rows = Math.ceil(canvas.height / spacing) + 1;
+      const cols = Math.ceil(canvas.width / SPACING) + 1;
+      const rows = Math.ceil(canvas.height / SPACING) + 1;
       const time = timestamp / 1000;
 
       // Build a single path per dot (arcs share the same radius so we can
@@ -54,8 +60,8 @@ export default function GridBackground() {
           const raw = 0.5 + 0.5 * Math.sin(time * 1.2 + phase);
           const bucket = Math.min(BUCKETS - 1, Math.floor(raw * BUCKETS));
           const p = paths[bucket];
-          const cx = col * spacing;
-          const cy = row * spacing;
+          const cx = col * SPACING;
+          const cy = row * SPACING;
           p.moveTo(cx + 1.5, cy);
           p.arc(cx, cy, 1.5, 0, Math.PI * 2);
         }
@@ -69,8 +75,6 @@ export default function GridBackground() {
           : `rgba(31,111,235,${alpha.toFixed(3)})`;
         ctx.fill(paths[b]);
       }
-
-      animId = requestAnimationFrame(draw);
     };
 
     draw();
@@ -93,6 +97,7 @@ export default function GridBackground() {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 0,
+        willChange: 'transform',   // compositor hint — reduces layout invalidation
       }}
     />
   );
