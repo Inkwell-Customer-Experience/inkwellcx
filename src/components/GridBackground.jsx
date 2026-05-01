@@ -24,7 +24,16 @@ export default function GridBackground() {
       canvas.height = window.innerHeight;
     };
     resize();
-    window.addEventListener('resize', resize);
+
+    let resizeTimer = null;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }, 100);
+    };
+    window.addEventListener('resize', handleResize);
 
     const draw = (timestamp = 0) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -68,7 +77,8 @@ export default function GridBackground() {
 
     return () => {
       if (animId !== null) cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
       observer.disconnect();
     };
   }, []);

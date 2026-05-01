@@ -1,5 +1,23 @@
 /* ── BLUEPRINT DESIGN SYSTEM ── */
 
+/* Size-adjusted fallback fonts — prevents CLS when web fonts swap in */
+@font-face {
+  font-family: 'Syne-fallback';
+  src: local('Arial');
+  size-adjust: 96%;
+  ascent-override: 91%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'SpaceMono-fallback';
+  src: local('Courier New');
+  size-adjust: 108%;
+  ascent-override: 86%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -20,8 +38,8 @@
   --navbar-bg:   rgba(13,17,23,0.92);
   --surface-hover: #151e28;
 
-  --font-mono: 'Space Mono', monospace;
-  --font-sans: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', 'SpaceMono-fallback', monospace;
+  --font-sans: 'Syne', 'Syne-fallback', sans-serif;
 
   --radius: 6px;
   --transition: 0.2s ease;
