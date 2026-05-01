@@ -49,6 +49,22 @@ const pricingPlans = [
     featured: true,
     cta: 'Get Started',
   },
+  {
+    name: 'Growth Package',
+    price: 'R999',
+    period: '/mo',
+    desc: 'Full-service growth for ambitious businesses ready to scale.',
+    features: [
+      'Everything in Full Retainer',
+      'Advanced SEO & content strategy',
+      'Conversion rate optimisation (CRO)',
+      'Monthly A/B testing',
+      'Dedicated account manager',
+      'Quarterly growth strategy review',
+    ],
+    featured: false,
+    cta: 'Talk to Us',
+  },
 ];
 
 export default function Services() {

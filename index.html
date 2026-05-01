@@ -49,6 +49,19 @@
     </style>
   </head>
   <body>
+    <!-- Blocking theme script: applies stored theme before React mounts to prevent FOUC/CLS -->
+    <script>
+      (function(){
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+        } catch(e){}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
