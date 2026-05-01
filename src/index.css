@@ -207,7 +207,7 @@ button {
   border-radius: var(--radius);
   border: none;
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform var(--transition), opacity var(--transition);
   white-space: nowrap;
 }
 
@@ -229,7 +229,7 @@ button {
   border-radius: var(--radius);
   border: 1px solid #30363D;
   cursor: pointer;
-  transition: var(--transition);
+  transition: opacity var(--transition);
   white-space: nowrap;
 }
 
@@ -521,7 +521,6 @@ button {
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 12px;
-  transition: border-color var(--transition);
   outline: none;
 }
 
@@ -663,7 +662,6 @@ textarea.form-input {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--muted);
-  transition: color var(--transition);
 }
 
 .footer-links a:hover {
@@ -704,7 +702,6 @@ textarea.form-input {
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--muted-dark);
-  transition: color var(--transition);
 }
 
 .footer-bottom-links a:hover {
@@ -806,7 +803,6 @@ textarea.form-input {
   letter-spacing: 0.08em;
   padding: 8px 12px;
   border-radius: 4px;
-  transition: color 0.2s;
   text-decoration: none;
 }
 
@@ -823,7 +819,6 @@ textarea.form-input {
   cursor: pointer;
   padding: 6px 10px;
   border-radius: var(--radius);
-  transition: color var(--transition), border-color var(--transition);
   line-height: 1;
 }
 
@@ -889,6 +884,21 @@ textarea.form-input {
   gap: 4px;
 }
 
+/* ── RESULTS & FEATURED WORK GRIDS ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.featured-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
 /* ── HERO GRID ── */
 .hero-grid {
   display: grid;
@@ -926,6 +936,8 @@ textarea.form-input {
   .container { padding: 0 20px; }
   .hero-headline { font-size: clamp(30px, 8vw, 48px); }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .results-grid { grid-template-columns: 1fr; }
+  .featured-work-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
