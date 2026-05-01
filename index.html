@@ -8,11 +8,25 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=fallback" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=fallback" media="print" onload="this.media='all'" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=optional" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=optional" media="print" onload="this.media='all'" />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=fallback" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=optional" />
     </noscript>
+    <link rel="preload" as="image" href="/logo-dark.svg" />
+    <link rel="preload" as="image" href="/logo-light.svg" />
+    <style>
+      /* Critical above-the-fold CSS — prevents blank flash while bundle loads */
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--bg:#0D1117;--surface:#111820;--border:#21262D;--text:#E6EDF3;--muted:#7D8590;--accent:#1F6FEB;--navbar-bg:rgba(13,17,23,0.92);--radius:6px}
+      [data-theme="light"]{--bg:#F6F8FA;--surface:#FFFFFF;--border:#D0D7DE;--text:#1F2328;--navbar-bg:rgba(246,248,250,0.92)}
+      html{scroll-behavior:smooth}
+      body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+      .page-wrapper{max-width:1280px;margin:0 auto;border-left:.5px solid var(--border);border-right:.5px solid var(--border);min-height:100vh;position:relative;z-index:1;overflow-x:hidden}
+      .navbar{position:sticky;top:0;z-index:1000;background:var(--navbar-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+      .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+      .container{max-width:1160px;margin:0 auto;padding:0 32px}
+    </style>
     <style>
       /* Inlined here so fallback metrics are available before any external stylesheet
          loads — eliminates the metric-shift when web fonts swap in (CLS fix). */
