@@ -110,7 +110,6 @@ export default function Navbar() {
                     padding: '12px 16px',
                     borderRadius: 4,
                     textAlign: 'left',
-                    transition: 'color 0.2s',
                   }}
                 >
                   {label}

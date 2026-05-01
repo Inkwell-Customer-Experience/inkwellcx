@@ -220,7 +220,7 @@ export default function Home() {
           <h2 className="section-headline" style={{ marginBottom: 40 }}>
             Numbers that matter. Not vanity metrics.
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, border: '1px solid var(--border)' }}>
+          <div className="results-grid">
             {[
               { num: '3.4×', desc: 'Average conversion rate increase within 90 days of launch — across all active clients.', source: 'Avg. across InkwellCX client portfolio' },
               { num: '-62%', desc: 'Reduction in page load time after our performance optimisation. Faster sites rank better and convert more.', source: 'Avg. load time improvement on managed sites' },
@@ -267,7 +267,7 @@ export default function Home() {
               View All →
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, border: '1px solid var(--border)' }}>
+          <div className="featured-work-grid">
             {[
               { title: 'WA Fourie Inc', meta: 'Law firm', url: 'https://onlymechris.github.io/Wa-Fourie/', link: 'Demo — WA Fourie Inc' },
               { title: 'Agrisilo', meta: 'Agriculture', url: 'https://onlymechris.github.io/agrisilo/', link: 'Demo — Agrisilo' },
