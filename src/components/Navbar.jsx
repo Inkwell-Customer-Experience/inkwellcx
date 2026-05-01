@@ -21,33 +21,13 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
-        background: 'var(--navbar-bg)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid var(--border)',
-        boxShadow: scrolled ? '0 4px 40px rgba(0,0,0,0.4)' : 'none',
-        transition: 'box-shadow 0.3s',
-      }}
-    >
+    <header className={scrolled ? 'navbar scrolled' : 'navbar'}>
       <div className="container">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
+        <div className="navbar-inner">
           {/* Logo */}
           <button
             onClick={() => handleNav('/')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              padding: 0,
-            }}
+            className="navbar-logo-button"
             aria-label="InkwellCX home"
           >
             {theme === 'dark' ? (
@@ -76,11 +56,10 @@ export default function Navbar() {
           </nav>
 
           {/* CTA + theme toggle + hamburger */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div className="navbar-actions">
             <button
-              className="btn-primary"
+              className="btn-primary navbar-cta"
               onClick={() => handleNav('/contact')}
-              style={{ fontSize: 11, padding: '9px 16px', display: 'flex' }}
             >
               → Let's Talk
             </button>
@@ -107,15 +86,9 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div
-          style={{
-            borderTop: '1px solid var(--border)',
-            background: 'var(--surface)',
-            padding: '16px 0',
-          }}
-        >
+        <div className="mobile-nav-panel">
           <div className="container">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <div className="mobile-nav-items">
               {[
                 { path: '/', label: 'Home' },
                 { path: '/services', label: 'Services' },

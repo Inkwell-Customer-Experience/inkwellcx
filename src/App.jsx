@@ -2,15 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 const SpeedInsights = lazy(() => import('@vercel/speed-insights/react').then((mod) => ({ default: mod.SpeedInsights })));
 const Analytics = lazy(() => import('@vercel/analytics/react').then((mod) => ({ default: mod.Analytics })));
-import GridBackground from './components/GridBackground.jsx';
+const GridBackground = lazy(() => import('./components/GridBackground.jsx'));
+const Home = lazy(() => import('./pages/Home.jsx'));
+const Services = lazy(() => import('./pages/Services.jsx'));
+const Audit = lazy(() => import('./pages/Audit.jsx'));
+const SEO = lazy(() => import('./pages/SEO.jsx'));
+const About = lazy(() => import('./pages/About.jsx'));
+const Contact = lazy(() => import('./pages/Contact.jsx'));
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import Home from './pages/Home.jsx';
-import Services from './pages/Services.jsx';
-import Audit from './pages/Audit.jsx';
-import SEO from './pages/SEO.jsx';
-import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx';
 
 const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
 
@@ -18,17 +18,21 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
-        <GridBackground />
+        <Suspense fallback={null}>
+          <GridBackground />
+        </Suspense>
         <div className="page-wrapper">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/audit" element={<Audit />} />
-            <Route path="/seo" element={<SEO />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/audit" element={<Audit />} />
+              <Route path="/seo" element={<SEO />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </Suspense>
           <Footer />
         </div>
       </div>
