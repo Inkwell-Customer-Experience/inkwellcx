@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 
-const EMAILJS_SERVICE_ID = 'service_y948qog';
-const EMAILJS_TEMPLATE_ID = 'template_wu7biqf';
-const EMAILJS_PUBLIC_KEY = 'AtakOWYeTr1NBgyJr';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
 
 const contactInfo = [
-  { icon: '💬', label: 'WhatsApp (Fastest)', value: '+27 71 092 1755', href: 'https://wa.me/27710921755' },
-  { icon: '📧', label: 'Email', value: 'support@inkwellcx.com', href: 'mailto:support@inkwellcx.com' },
+  { icon: '💬', label: 'WhatsApp (Fastest)', value: `+${WHATSAPP_PHONE.replace(/(..)(?=.)/g, '$1 ')}`, href: `https://wa.me/${WHATSAPP_PHONE}` },
+  { icon: '📧', label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
   { icon: '🕐', label: 'Response Time', value: 'Within 1 business day', href: null },
   { icon: '📍', label: 'Based in', value: 'South Africa (SAST)', href: null },
 ];
@@ -153,7 +155,7 @@ export default function Contact() {
                       type="email"
                       name="user_email"
                       className="form-input"
-                      placeholder="jane@yourbusiness.com"
+                      placeholder="user@yourbusiness.com"
                       value={formData.user_email}
                       onChange={handleChange}
                       required
@@ -162,7 +164,6 @@ export default function Contact() {
                   <div className="form-group">
                     <label className="form-label">Website URL</label>
                     <input
-                      type="url"
                       name="website_url"
                       className="form-input"
                       placeholder="https://yoursite.co.za"

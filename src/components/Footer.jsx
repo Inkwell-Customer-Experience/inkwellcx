@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext.jsx';
+
+const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
 
 export default function Footer() {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const go = (path) => {
     navigate(path);
@@ -19,7 +24,11 @@ export default function Footer() {
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                 aria-label="InkwellCX home"
               >
-                <img src="/InkWell1.png" alt="InkwellCX" style={{ height: 40, width: 'auto' }} />
+                {theme === 'dark' ? (
+                  <img src="/logo-dark.svg" alt="InkwellCX" style={{ height: 80, width: 'auto' }} />
+                ) : (
+                  <img src="/logo-light.svg" alt="InkwellCX" style={{ height: 80, width: 'auto' }} />
+                )}
               </button>
             </div>
             <p className="footer-desc">
@@ -72,7 +81,7 @@ export default function Footer() {
               <li><button onClick={() => go('/contact')} style={linkBtnStyle}>Free Audit</button></li>
               <li><button onClick={() => go('/contact')} style={linkBtnStyle}>Request a Quote</button></li>
               <li>
-                <a href="https://wa.me/27710921755" target="_blank" rel="noopener noreferrer"
+                <a href={`https://wa.me/${WHATSAPP_PHONE}`} target="_blank" rel="noopener noreferrer"
                   style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: 'var(--muted)', textDecoration: 'none' }}
                 >WhatsApp Us</a>
               </li>

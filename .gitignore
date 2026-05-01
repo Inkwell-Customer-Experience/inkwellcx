@@ -3,3 +3,6 @@ dist/
 .DS_Store
 *.local
 old.html.bak
+.env
+.env.local
+.env.*.local

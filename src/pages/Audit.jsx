@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
+
 const auditItems = [
   'Page speed & Core Web Vitals',
   'Mobile responsiveness & UX',
@@ -63,7 +65,7 @@ export default function Audit() {
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <button className="btn-primary" onClick={() => go('/contact')}>Request Your Free Audit →</button>
-            <a href="https://wa.me/27710921755" className="btn-ghost" target="_blank" rel="noopener noreferrer">💬 Ask a Question</a>
+            <a href={`https://wa.me/${WHATSAPP_PHONE}`} className="btn-ghost" target="_blank" rel="noopener noreferrer">💬 Ask a Question</a>
           </div>
         </div>
       </section>

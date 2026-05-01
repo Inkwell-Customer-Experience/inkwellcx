@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 const pricingPlans = [
   {
     name: 'Starter Website',
-    price: 'R1,800',
+    price: 'R1,750', // Discounted price
+    originalPrice: 'R2,500', // Original price
+    discount: '30%',
     period: '',
     desc: 'Basic website build with SEO included.',
     features: [
@@ -163,9 +165,39 @@ export default function Services() {
           <div className="pricing-grid">
             {pricingPlans.map((plan) => (
               <div className={`pricing-card ${plan.featured ? 'featured' : ''}`} key={plan.name}>
+                {/* Launch Offer tag for Starter Website */}
+                {plan.name === 'Starter Website' && (
+                  <div style={{
+                    background: 'var(--blue-link)',
+                    color: '#fff',
+                    fontSize: 11,
+                    fontWeight: 700,
+                    padding: '4px 10px',
+                    borderRadius: 12,
+                    display: 'inline-block',
+                    marginBottom: 8,
+                    letterSpacing: 1,
+                  }}>
+                    LAUNCH OFFER
+                  </div>
+                )}
                 {plan.featured && <div className="featured-badge">Best Value</div>}
                 <div className="pricing-name">{plan.name}</div>
-                <div className="pricing-price">{plan.price}<span>{plan.period}</span></div>
+                <div className="pricing-price">
+                  {/* Show strikethrough and discount for Starter Website */}
+                  {plan.originalPrice ? (
+                    <>
+                      <span style={{ textDecoration: 'line-through', color: 'var(--muted)', fontSize: 14, marginRight: 8 }}>{plan.originalPrice}</span>
+                      <span style={{ color: 'var(--green)', fontWeight: 700 }}>{plan.price}</span>
+                      <span style={{ fontSize: 12, color: 'var(--green)', marginLeft: 8, fontWeight: 600 }}>({plan.discount} OFF)</span>
+                      <span>{plan.period}</span>
+                    </>
+                  ) : (
+                    <>
+                      {plan.price}<span>{plan.period}</span>
+                    </>
+                  )}
+                </div>
                 <p className="pricing-desc">{plan.desc}</p>
                 <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '0 0 20px' }} />
                 <ul className="pricing-features">

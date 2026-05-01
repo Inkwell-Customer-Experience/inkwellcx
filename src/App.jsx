@@ -11,6 +11,8 @@ import SEO from './pages/SEO.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 
+const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
+
 function App() {
   return (
     <BrowserRouter>
@@ -31,7 +33,7 @@ function App() {
       </div>
       {/* WhatsApp float button */}
       <a
-        href="https://wa.me/27710921755"
+        href={`https://wa.me/${WHATSAPP_PHONE}`}
         className="wa-float"
         target="_blank"
         rel="noopener noreferrer"
