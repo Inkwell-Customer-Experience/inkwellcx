@@ -1,42 +1,24 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import GridBackground from './components/GridBackground.jsx';
 
-// Defer Vercel analytics to avoid blocking initial render
+// Defer non-critical Vercel tools to after paint
 const SpeedInsights = lazy(() => 
   new Promise(resolve => {
-    // Load after page is interactive
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-          import('@vercel/speed-insights/react').then((mod) => resolve({ default: mod.SpeedInsights }));
-        }, 2000);
-      });
-    } else {
-      setTimeout(() => {
-        import('@vercel/speed-insights/react').then((mod) => resolve({ default: mod.SpeedInsights }));
-      }, 2000);
-    }
+    requestIdleCallback(() => {
+      import('@vercel/speed-insights/react').then((mod) => resolve({ default: mod.SpeedInsights }));
+    });
   })
 );
 
 const Analytics = lazy(() => 
   new Promise(resolve => {
-    // Load after page is interactive
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-          import('@vercel/analytics/react').then((mod) => resolve({ default: mod.Analytics }));
-        }, 2000);
-      });
-    } else {
-      setTimeout(() => {
-        import('@vercel/analytics/react').then((mod) => resolve({ default: mod.Analytics }));
-      }, 2000);
-    }
+    requestIdleCallback(() => {
+      import('@vercel/analytics/react').then((mod) => resolve({ default: mod.Analytics }));
+    });
   })
 );
 const Services = lazy(() => import('./pages/Services.jsx'));
@@ -48,10 +30,12 @@ const Contact = lazy(() => import('./pages/Contact.jsx'));
 const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
 
 function App() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   return (
     <BrowserRouter>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
-        <GridBackground />
+        {!isMobile && <GridBackground />}
         <div className="page-wrapper">
           <Navbar />
           <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>  
