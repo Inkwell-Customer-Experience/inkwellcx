@@ -3,7 +3,21 @@ import { useNavigate } from 'react-router-dom';
 
 const pricingPlans = [
   {
-    name: 'Starter Website',
+    name: 'Entry level Website',
+    price: 'R999',
+    desc: 'Full-service growth for ambitious businesses ready to scale.',
+    features: [
+      'Single page landing website',
+      'Simple SEO setup',
+      'Mobile-friendly design',
+      'Fast launch process',
+      'Launch support included',
+    ],
+    featured: false,
+    cta: 'Talk to Us',
+  },
+  {
+    name: 'Basic Website',
     price: 'R1,750', // Discounted price
     originalPrice: 'R2,500', // Original price
     discount: '30%',
@@ -17,6 +31,7 @@ const pricingPlans = [
       'Launch support included',
     ],
     featured: false,
+    launchOffer: true,
     cta: 'Get Started',
   },
   {
@@ -48,22 +63,6 @@ const pricingPlans = [
     ],
     featured: true,
     cta: 'Get Started',
-  },
-  {
-    name: 'Growth Package',
-    price: 'R999',
-    period: '/mo',
-    desc: 'Full-service growth for ambitious businesses ready to scale.',
-    features: [
-      'Everything in Full Retainer',
-      'Advanced SEO & content strategy',
-      'Conversion rate optimisation (CRO)',
-      'Monthly A/B testing',
-      'Dedicated account manager',
-      'Quarterly growth strategy review',
-    ],
-    featured: false,
-    cta: 'Talk to Us',
   },
 ];
 
@@ -180,32 +179,19 @@ export default function Services() {
 
           <div className="pricing-grid">
             {pricingPlans.map((plan) => (
-              <div className={`pricing-card ${plan.featured ? 'featured' : ''}`} key={plan.name}>
-                {/* Launch Offer tag for Starter Website */}
-                {plan.name === 'Starter Website' && (
-                  <div style={{
-                    background: 'var(--blue-link)',
-                    color: '#fff',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: '4px 10px',
-                    borderRadius: 12,
-                    display: 'inline-block',
-                    marginBottom: 8,
-                    letterSpacing: 1,
-                  }}>
-                    LAUNCH OFFER
-                  </div>
-                )}
+              <div className={`pricing-card ${plan.featured ? 'featured' : ''} ${plan.launchOffer ? 'launch-offer' : ''}`} key={plan.name}>
+                {/* Launch Offer tag for Basic Website */}
+                {plan.launchOffer && <div className="launch-badge">Launch Offer</div>}
                 {plan.featured && <div className="featured-badge">Best Value</div>}
                 <div className="pricing-name">{plan.name}</div>
                 <div className="pricing-price">
                   {/* Show strikethrough and discount for Starter Website */}
                   {plan.originalPrice ? (
                     <>
+                      <span style={{ color: 'var(--green)', fontWeight: 800, fontSize: 40 }}>{plan.price}</span>
+                      <div></div>
                       <span style={{ textDecoration: 'line-through', color: 'var(--muted)', fontSize: 14, marginRight: 8 }}>{plan.originalPrice}</span>
-                      <span style={{ color: 'var(--green)', fontWeight: 700 }}>{plan.price}</span>
-                      <span style={{ fontSize: 12, color: 'var(--green)', marginLeft: 8, fontWeight: 600 }}>({plan.discount} OFF)</span>
+                      <span style={{ fontSize: 12, color: 'var(--green)', marginLeft: 8, fontWeight: 700 }}>({plan.discount} OFF)</span>
                       <span>{plan.period}</span>
                     </>
                   ) : (

@@ -553,6 +553,11 @@ textarea.form-input {
   background: linear-gradient(180deg, rgba(31,111,235,0.06) 0%, var(--surface) 100%);
 }
 
+.pricing-card.launch-offer {
+  border-color: var(--green);
+  background: linear-gradient(180deg, rgba(63,185,80,0.06) 0%, var(--surface) 100%);
+}
+
 .pricing-name {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -618,6 +623,23 @@ textarea.form-input {
   left: 50%;
   transform: translateX(-50%);
   background: var(--accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.launch-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
   color: #fff;
   font-family: var(--font-mono);
   font-size: 10px;
@@ -911,7 +933,7 @@ textarea.form-input {
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 5px;
 }
 
 /* ── RESPONSIVE ── */
