@@ -1,12 +1,44 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import GridBackground from './components/GridBackground.jsx';
 
-const SpeedInsights = lazy(() => import('@vercel/speed-insights/react').then((mod) => ({ default: mod.SpeedInsights })));
-const Analytics = lazy(() => import('@vercel/analytics/react').then((mod) => ({ default: mod.Analytics })));
+// Defer Vercel analytics to avoid blocking initial render
+const SpeedInsights = lazy(() => 
+  new Promise(resolve => {
+    // Load after page is interactive
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          import('@vercel/speed-insights/react').then((mod) => resolve({ default: mod.SpeedInsights }));
+        }, 2000);
+      });
+    } else {
+      setTimeout(() => {
+        import('@vercel/speed-insights/react').then((mod) => resolve({ default: mod.SpeedInsights }));
+      }, 2000);
+    }
+  })
+);
+
+const Analytics = lazy(() => 
+  new Promise(resolve => {
+    // Load after page is interactive
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          import('@vercel/analytics/react').then((mod) => resolve({ default: mod.Analytics }));
+        }, 2000);
+      });
+    } else {
+      setTimeout(() => {
+        import('@vercel/analytics/react').then((mod) => resolve({ default: mod.Analytics }));
+      }, 2000);
+    }
+  })
+);
 const Services = lazy(() => import('./pages/Services.jsx'));
 const Audit = lazy(() => import('./pages/Audit.jsx'));
 const SEO = lazy(() => import('./pages/SEO.jsx'));

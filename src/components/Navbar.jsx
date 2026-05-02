@@ -31,9 +31,9 @@ export default function Navbar() {
             aria-label="InkwellCX home"
           >
             {theme === 'dark' ? (
-              <img src="/logo-dark.svg" alt="InkwellCX" width={144} height={64} fetchPriority="high" style={{ height: 64, width: 'auto' }} />
+              <img src="/logo-dark.svg" alt="InkwellCX" width={144} height={64} fetchPriority="high" style={{ height: 48, width: 'auto' }} decoding="async" loading="eager" />
             ) : (
-              <img src="/logo-light.svg" alt="InkwellCX" width={144} height={64} fetchPriority="high" style={{ height: 64, width: 'auto' }} />
+              <img src="/logo-light.svg" alt="InkwellCX" width={144} height={64} fetchPriority="high" style={{ height: 48, width: 'auto' }} decoding="async" loading="eager" />
             )}
           </button>
 

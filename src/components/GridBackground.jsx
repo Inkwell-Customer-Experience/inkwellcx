@@ -6,12 +6,37 @@ export default function GridBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    
+    // Skip animation on mobile for better FCP/LCP
+    let isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Still render static grid but no animation
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const spacing = 80;
+      ctx.strokeStyle = 'rgba(33, 38, 45, 0.5)';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < canvas.width; x += spacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += spacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+      return;
+    }
+    
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animId = null;
     let lastFrame = 0;
-    let isMobile = window.innerWidth < 768;
 
     let isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const observer = new MutationObserver(() => {
