@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import Home from './pages/Home.jsx';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import GridBackground from './components/GridBackground.jsx';
+
 const SpeedInsights = lazy(() => import('@vercel/speed-insights/react').then((mod) => ({ default: mod.SpeedInsights })));
 const Analytics = lazy(() => import('@vercel/analytics/react').then((mod) => ({ default: mod.Analytics })));
-const GridBackground = lazy(() => import('./components/GridBackground.jsx'));
-import Home from './pages/Home.jsx';
 const Services = lazy(() => import('./pages/Services.jsx'));
 const Audit = lazy(() => import('./pages/Audit.jsx'));
 const SEO = lazy(() => import('./pages/SEO.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
 
 const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
 
@@ -18,12 +19,10 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
-        <Suspense fallback={null}>
-          <GridBackground />
-        </Suspense>
+        <GridBackground />
         <div className="page-wrapper">
           <Navbar />
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>  
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
@@ -36,16 +35,10 @@ function App() {
           <Footer />
         </div>
       </div>
-      {/* WhatsApp float button */}
-      <a
-        href={`https://wa.me/${WHATSAPP_PHONE}`}
-        className="wa-float"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-      >
+      <a href={`https://wa.me/${WHATSAPP_PHONE}`} className="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24" fill="white" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-2.401-2.548-.52-.457-1.085-.693-1.657-.501-.42.138-.77.414-1.064.747-.23.266-.355.547-.412.83-.057.283-.058.577.024.87.16.57.561 1.174 1.127 1.697 1.337 1.234 2.729 2.072 4.098 2.395.371.088.72.088 1.044-.016.447-.143.773-.497 1.02-.904.256-.42.36-.92.28-1.38z" />
+          <path d="M11.998 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.304A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2zm.002 18a7.964 7.964 0 0 1-4.073-1.113l-.291-.173-3.012.79.8-2.927-.19-.302A7.963 7.963 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" />
         </svg>
       </a>
       <Suspense fallback={null}>
