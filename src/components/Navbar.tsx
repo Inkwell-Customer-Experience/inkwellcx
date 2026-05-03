@@ -4,12 +4,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useTheme } from './ThemeContext';
+import Image from 'next/image';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+
 
   if (typeof window !== 'undefined') {
     window.addEventListener('scroll', () => setScrolled(window.scrollY > 10));
@@ -24,9 +26,23 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="navbar-logo-button" aria-label="InkwellCX home">
             {theme === 'dark' ? (
-              <img src="/logo-dark.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} fetchPriority='high' />
+              <Image 
+                src="/logo-dark.svg" 
+                alt="InkwellCX" 
+                width={144} 
+                height={64}
+                style={{ height: 48, width: 'auto' }}
+                priority = {true}
+              />
             ) : (
-              <img src="/logo-light.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} fetchPriority='high' />
+              <Image 
+                src="/logo-light.svg" 
+                alt="InkwellCX" 
+                width={144} 
+                height={64}
+                style={{ height: 48, width: 'auto' }}
+                priority
+              />
             )}
           </Link>
 

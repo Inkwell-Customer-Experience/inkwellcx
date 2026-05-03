@@ -69,7 +69,7 @@ export default function Home() {
           <div className="metric-label">client retention</div>
         </div>
         <div className="metric-cell">
-          <div className="metric-num">140+</div>
+          <div className="metric-num">30+</div>
           <div className="metric-label">sites built</div>
         </div>
       </div>
