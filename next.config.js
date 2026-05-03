@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export - no server needed
-  output: 'export',
   
   // Optimize images
   images: {

@@ -6,3 +6,5 @@ old.html.bak
 .env
 .env.local
 .env.*.local
+.next/
+out/

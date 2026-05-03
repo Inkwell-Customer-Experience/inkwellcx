@@ -6,19 +6,8 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GridBackground } from '@/components/GridBackground';
 
-const syne = Syne({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '600', '700', '800'],
-  variable: '--font-syne',
-});
-
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '700'],
-  variable: '--font-space-mono',
-});
+const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], display: 'swap' })
+const syne = Syne({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'InkwellCX — Websites That Convert',
@@ -44,7 +33,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
-      <body className={`${syne.variable} ${spaceMono.variable}`}>
+      <body className={`${syne.className} ${spaceMono.className}`}>
         <ThemeProvider>
           <GridBackground />
           <div style={{ position: 'relative', minHeight: '100vh' }}>
