@@ -24,9 +24,9 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="navbar-logo-button" aria-label="InkwellCX home">
             {theme === 'dark' ? (
-              <img src="/logo-dark.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} />
+              <img src="/logo-dark.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} fetchPriority='high' />
             ) : (
-              <img src="/logo-light.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} />
+              <img src="/logo-light.svg" alt="InkwellCX" width={144} height={64} style={{ height: 48, width: 'auto' }} fetchPriority='high' />
             )}
           </Link>
 
