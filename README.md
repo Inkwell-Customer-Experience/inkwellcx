@@ -1,54 +1,86 @@
 # InkwellCX
 
-High-converting website built with **Vite + React** and the **Blueprint** design system.
+High-converting website built with **Next.js 15+** and **TypeScript**, featuring the **Blueprint** design system.
 
-## Setup
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Build & Deployment
+
+### Production Build
 
 ```bash
 npm run build
+npm run start
 ```
 
-Preview the production build locally:
-
-```bash
-npm run preview
-```
+The project is optimized for deployment on Vercel with automatic deployments from the main branch.
 
 ## Project Structure
 
 ```
-index.html           ← Vite entry point
-vite.config.js       ← Vite config (base: './')
 src/
-  main.jsx           ← React DOM entry
-  App.jsx            ← Router + layout
-  index.css          ← Global styles + Blueprint tokens
+  app/
+    layout.tsx           ← Root layout with theme provider
+    page.tsx             ← Home page
+    globals.css          ← Global styles + Blueprint tokens
+    about/
+      page.tsx
+    audit/
+      page.tsx
+    contact/
+      page.tsx
+    services/
+      page.tsx
+    seo/
+      page.tsx
   components/
-    Navbar.jsx
-    Footer.jsx
-  pages/
-    Home.jsx
-    Services.jsx
-    Audit.jsx
-    SEO.jsx
-    About.jsx
-    Contact.jsx
+    Navbar.tsx           ← Navigation with theme toggle
+    Footer.tsx           ← Footer with logo and links
+    GridBackground.tsx   ← Animated grid background
+    ThemeContext.tsx     ← Dark/light theme provider
 public/
-  InkWell1.png       ← Logo
-  InkWell.png
-  favicon.png
+  InkWell.png           ← Light theme logo
+  InkWell1.png          ← Dark theme logo
+  favicon.svg
 ```
 
 ## Design System — Blueprint
 
-- **Fonts**: Space Mono (monospace) + Syne (headings)
-- **Background**: `#0D1117` with dot-grid overlay
-- **Accent**: `#1F6FEB`
-- **Status green**: `#3FB950`
+- **Fonts**: Space Mono (monospace) + Syne (headings) — loaded from Google Fonts
+- **Colors**:
+  - Dark theme: `#0D1117` background with `#1F6FEB` accent
+  - Light theme: `#F6F8FA` background with `#0969DA` accent
+- **Status colors**: Green `#3FB950`, Red `#E84545`
+- **Responsive**: Mobile-first design with breakpoints at 1024px and 768px
+
+## Features
+
+✅ Full Next.js 15+ with App Router
+✅ TypeScript for type safety
+✅ Dark/Light theme switching with localStorage persistence
+✅ Server Components for performance
+✅ CSS Grid-based responsive layouts
+✅ Vercel Analytics & Speed Insights integrated
+✅ SEO optimized with metadata
+✅ Static generation for improved performance
+
+## Vercel Integration
+
+The site includes Vercel Analytics and Speed Insights for performance monitoring. These are lazy-loaded after page render to avoid blocking.
+
+## License
+
+All rights reserved © InkwellCX
