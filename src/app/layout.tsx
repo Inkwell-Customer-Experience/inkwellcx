@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/ThemeContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GridBackground } from '@/components/GridBackground';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], display: 'swap' })
 const syne = Syne({ subsets: ['latin'], display: 'swap' })
@@ -118,6 +119,7 @@ export default function RootLayout({
             <div className="page-wrapper">
               <Navbar />
               {children}
+              <SpeedInsights />
               <Footer />
             </div>
           </div>

@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { ContactForm } from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact — Get in Touch with InkwellCX | Web Design Agency',
@@ -60,40 +61,7 @@ export default function Contact() {
               <span className="page-tag">// contact form</span>
               <h2 className="section-headline" style={{ marginBottom: 32 }}>Send us a message.</h2>
               
-              <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 32 }}>
-                <form style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                  <div className="form-group">
-                    <label className="form-label">Name</label>
-                    <input type="text" className="form-input" placeholder="Your name" />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Email</label>
-                    <input type="email" className="form-input" placeholder="your@email.com" />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Project Type</label>
-                    <select className="form-input" style={{ appearance: 'none' }}>
-                      <option>Select one...</option>
-                      <option>New Website</option>
-                      <option>Website Audit</option>
-                      <option>SEO Optimization</option>
-                      <option>Retainer/Management</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Message</label>
-                    <textarea className="form-input" placeholder="Tell us about your project..."></textarea>
-                  </div>
-
-                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                    Send Message
-                  </button>
-                </form>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>
