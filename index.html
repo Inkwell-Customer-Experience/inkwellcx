@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InkwellCX — Websites That Convert</title>
     <meta name="description" content="InkwellCX builds and manages high-converting websites for ambitious businesses. Design, hosting, SEO, analytics, and ongoing optimisation — all in one place." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" width="96" height="96" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=block"/>
     <link rel="preload" as="image" href="/logo-dark.svg" fetchpriority="high" />
     <link rel="preload" as="image" href="/logo-light.svg" fetchpriority="high" />
     <style>
-      /* Critical above-the-fold CSS — prevents blank flash while bundle loads */
+      /* Critical above-the-fold CSS */
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       :root{--bg:#0D1117;--surface:#111820;--border:#21262D;--text:#E6EDF3;--muted:#7D8590;--accent:#1F6FEB;--navbar-bg:rgba(13,17,23,0.92);--radius:6px;--green:#3FB950;--font-mono:'Space Mono','SpaceMono-fallback',monospace;--font-sans:'Syne','Syne-fallback',sans-serif}
       [data-theme="light"]{--bg:#F6F8FA;--surface:#FFFFFF;--border:#D0D7DE;--text:#1F2328;--navbar-bg:rgba(246,248,250,0.92)}
@@ -29,8 +29,6 @@
       @keyframes pulse{0%{opacity:1}50%{opacity:.5}100%{opacity:1}}
     </style>
     <style>
-      /* Inlined here so fallback metrics are available before any external stylesheet
-         loads — eliminates the metric-shift when web fonts swap in (CLS fix). */
       @font-face {
         font-family: 'Syne-fallback';
         src: local('Arial');
@@ -50,7 +48,6 @@
     </style>
   </head>
   <body>
-    <!-- Blocking theme script: applies stored theme before React mounts to prevent FOUC/CLS -->
     <script>
       (function(){
         try {
