@@ -32,21 +32,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        {/* Preload critical fonts to improve FCP/LCP */}
-        <link 
-          rel="preload" 
-          as="font" 
-          href="https://fonts.gstatic.com/s/syne/v17/ZXuqe3VgLn44N4g4hP1gkCZpWOQvXWDl.woff2" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-        <link 
-          rel="preload" 
-          as="font" 
-          href="https://fonts.gstatic.com/s/spacemono/v13/i7dIEFliZjcOdO9w3G6HUHk3-dg-gdR2.woff2" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
         {/* Optimize theme injection to prevent flash */}
         <script dangerouslySetInnerHTML={{
           __html: `
