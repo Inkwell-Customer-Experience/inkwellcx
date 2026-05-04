@@ -8,3 +8,4 @@ old.html.bak
 .env.*.local
 .next/
 out/
+WEB_VITALS_OPTIMIZATION.md

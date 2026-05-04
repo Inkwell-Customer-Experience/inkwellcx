@@ -3,23 +3,18 @@
 import { useEffect, useState } from 'react';
 
 export function GridBackground() {
-  const [isMobile, setIsMobile] = useState(false);
   const [prefersReduced, setPrefersReduced] = useState(false);
 
   useEffect(() => {
-    // Check if mobile
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
     // Check prefers-reduced-motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReduced(mediaQuery.matches);
-    mediaQuery.addEventListener('change', (e) => setPrefersReduced(e.matches));
+    
+    const handleChange = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      mediaQuery.removeEventListener('change', (e) => setPrefersReduced(e.matches));
+      mediaQuery.removeEventListener('change', handleChange);
     };
   }, []);
 
@@ -34,25 +29,6 @@ export function GridBackground() {
           width: '100%',
           height: '100%',
           backgroundImage: 'radial-gradient(circle, rgba(31, 111, 235, 0.12) 1.5px, transparent 1.5px)',
-          backgroundSize: '50px 50px',
-          zIndex: -1,
-          pointerEvents: 'none',
-        }}
-      />
-    );
-  }
-
-  if (isMobile) {
-    // Static grid for mobile - pure CSS, no animation
-    return (
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundImage: 'radial-gradient(circle, rgba(31, 111, 235, 0.25) 1.5px, transparent 1.5px)',
           backgroundSize: '50px 50px',
           zIndex: -1,
           pointerEvents: 'none',
