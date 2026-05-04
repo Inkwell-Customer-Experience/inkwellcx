@@ -1,8 +1,13 @@
 export const dynamic = 'force-static';
 
-export const metadata = {
-  title: 'About — InkwellCX',
-  description: 'Learn about InkwellCX — the agency building high-converting websites for ambitious businesses.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About InkwellCX — Web Design Agency South Africa | Who We Are',
+  description: 'About InkwellCX: South Africa–based web design and digital marketing agency building high-converting websites for ambitious businesses.',
+  alternates: {
+    canonical: 'https://inkwellcx.com/about',
+  },
 };
 
 export const viewport = 'width=device-width, initial-scale=1.0';

@@ -1,8 +1,13 @@
 export const dynamic = 'force-static';
 
-export const metadata = {
-  title: 'Contact — InkwellCX',
-  description: 'Get in touch with InkwellCX. Let\'s discuss your next project.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact — Get in Touch with InkwellCX | Web Design Agency',
+  description: 'Contact InkwellCX for web design, SEO, and digital marketing services. Get a free consultation and discuss your next project.',
+  alternates: {
+    canonical: 'https://inkwellcx.com/contact',
+  },
 };
 
 export const viewport = 'width=device-width, initial-scale=1.0';

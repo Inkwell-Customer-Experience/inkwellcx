@@ -1,8 +1,13 @@
 export const dynamic = 'force-static';
 
-export const metadata = {
-  title: 'SEO & Growth — InkwellCX',
-  description: 'Sustainable organic growth through technical SEO, content strategy, and local search optimization.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'SEO Services & Growth Strategy — InkwellCX | Organic Traffic',
+  description: 'SEO services combining technical optimization, content strategy, and local search. Increase organic traffic and rank higher on Google.',
+  alternates: {
+    canonical: 'https://inkwellcx.com/seo',
+  },
 };
 
 export const viewport = 'width=device-width, initial-scale=1.0';

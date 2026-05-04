@@ -1,8 +1,13 @@
 export const dynamic = 'force-static';
 
-export const metadata = {
-  title: 'Website Audit — InkwellCX',
-  description: 'Get a detailed teardown of your website performance, conversions, SEO, and UX.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Free Website Audit — InkwellCX | Performance & SEO Analysis',
+  description: 'Free website audit including performance analysis, SEO issues, conversion optimization, and UX review. Identify what\'s holding your site back.',
+  alternates: {
+    canonical: 'https://inkwellcx.com/audit',
+  },
 };
 
 export const viewport = 'width=device-width, initial-scale=1.0';

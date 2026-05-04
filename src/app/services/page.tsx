@@ -1,6 +1,15 @@
 export const dynamic = 'force-static';
 
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Web Design & Services — InkwellCX | Custom Website Development',
+  description: 'Custom web design and development services. Entry-level to advanced websites optimized for conversions. Affordable packages starting at R999.',
+  alternates: {
+    canonical: 'https://inkwellcx.com/services',
+  },
+};
 
 const pricingPlans = [
   {
@@ -66,11 +75,6 @@ const pricingPlans = [
     cta: 'Get Started',
   },
 ];
-
-export const metadata = {
-  title: 'Services — InkwellCX',
-  description: 'Website design, hosting, SEO, audits, and ongoing management. Everything your site needs to perform and convert.',
-};
 
 export const viewport = 'width=device-width, initial-scale=1.0';
 

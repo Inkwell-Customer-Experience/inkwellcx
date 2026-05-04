@@ -1,5 +1,15 @@
 export const dynamic = 'force-static';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'InkwellCX - High-Converting Websites & Web Design Services',
+  description: 'High-converting websites built with design, hosting, SEO & analytics. Turn visitors into paying customers.',
+  alternates: {
+    canonical: 'https://inkwellcx.com',
+  },
+};
+
 export default function Home() {
   return (
     <main className="page-fade-in">
