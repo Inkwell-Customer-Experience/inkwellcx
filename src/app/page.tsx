@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { config } from '@/config/constants';
 
 export const metadata: Metadata = {
   title: 'InkwellCX - High-Converting Websites & Web Design Services',
@@ -46,7 +47,7 @@ export default function Home() {
             <a href="/contact" className="btn-primary">
               Get a Free Audit →
             </a>
-            <a href="https://wa.me/27710921755" className="btn-ghost" target="_blank" rel="noopener noreferrer">
+            <a href={config.contact.whatsappUrl} className="btn-ghost" target="_blank" rel="noopener noreferrer">
               💬 WhatsApp Us
             </a>
           </div>

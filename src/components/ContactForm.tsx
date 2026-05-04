@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { config } from '@/config/constants';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -27,10 +28,10 @@ export function ContactForm() {
 
     try {
       // Initialize EmailJS
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+      emailjs.init(config.emailjs.publicKey);
 
       const templateParams = {
-        to_email: 'support@inkwellcx.com',
+        to_email: config.contact.email,
         from_name: formData.name,
         from_email: formData.email,
         project_type: formData.projectType,
@@ -38,8 +39,8 @@ export function ContactForm() {
       };
 
       const response = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        config.emailjs.serviceId,
+        config.emailjs.templateId,
         templateParams
       );
 

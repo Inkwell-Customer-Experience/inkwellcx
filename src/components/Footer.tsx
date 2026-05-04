@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from './ThemeContext';
 import { useEffect, useState } from 'react';
+import { config } from '@/config/constants';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -42,7 +43,7 @@ export function Footer() {
               <ul className="footer-links">
                 <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
-                <li><a href="https://wa.me/27710921755" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                <li><a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
               </ul>
             </div>
 
@@ -99,7 +100,7 @@ export function Footer() {
             <ul className="footer-links">
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact</Link></li>
-              <li><a href="https://wa.me/27710921755" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
             </ul>
           </div>
 

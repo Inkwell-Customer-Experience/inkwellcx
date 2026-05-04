@@ -4,6 +4,7 @@ dist/
 *.local
 old.html.bak
 .env
+.env.example
 .env.local
 .env.*.local
 .next/

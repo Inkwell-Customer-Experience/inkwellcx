@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
+import { config } from '@/config/constants';
 
 export const metadata: Metadata = {
   title: 'Contact — Get in Touch with InkwellCX | Web Design Agency',
@@ -38,14 +39,14 @@ export default function Contact() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                 <div>
                   <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: 8 }}>Email</div>
-                  <a href="mailto:support@inkwellcx.com" style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
-                    support@inkwellcx.com
+                  <a href={`mailto:${config.contact.email}`} style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
+                    {config.contact.email}
                   </a>
                 </div>
                 
                 <div>
                   <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: 8 }}>WhatsApp</div>
-                  <a href="https://wa.me/27710921755" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
+                  <a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
                     +27 71 092 1755
                   </a>
                 </div>
