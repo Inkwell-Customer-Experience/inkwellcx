@@ -8,6 +8,8 @@ export function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    businessName: '',
+    website: '',
     projectType: 'Select one...',
     message: '',
   });
@@ -31,9 +33,10 @@ export function ContactForm() {
       emailjs.init(config.emailjs.publicKey);
 
       const templateParams = {
-        to_email: config.contact.email,
-        from_name: formData.name,
-        from_email: formData.email,
+        user_name: formData.name,
+        user_email: formData.email,
+        business_name: formData.businessName,
+        website_url: formData.website,
         project_type: formData.projectType,
         message: formData.message,
       };
@@ -47,7 +50,7 @@ export function ContactForm() {
       if (response.status === 200) {
         setStatus('success');
         setStatusMessage('Message sent successfully! We\'ll get back to you soon.');
-        setFormData({ name: '', email: '', projectType: 'Select one...', message: '' });
+        setFormData({ name: '', email: '', businessName: '', website: '', projectType: 'Select one...', message: '' });
       }
     } catch (error) {
       console.error('EmailJS Error:', error);
@@ -84,6 +87,30 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Business Name (Optional)</label>
+          <input
+            type="text"
+            name="businessName"
+            className="form-input"
+            placeholder="Your business name"
+            value={formData.businessName}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Website (Optional)</label>
+          <input
+            type="url"
+            name="website"
+            className="form-input"
+            placeholder="https://your-website.com"
+            value={formData.website}
+            onChange={handleChange}
           />
         </div>
 
