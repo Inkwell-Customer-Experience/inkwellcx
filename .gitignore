@@ -10,5 +10,5 @@ old.html.bak
 .next/
 out/
 WEB_VITALS_OPTIMIZATION.md
-lib/
+/lib/
 web-vitals.ts

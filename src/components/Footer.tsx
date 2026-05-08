@@ -33,6 +33,8 @@ export function Footer() {
               <div className="footer-col-title">Services</div>
               <ul className="footer-links">
                 <li><Link href="/services">Design & Development</Link></li>
+                <li><Link href="/web-design-south-africa">Web Design South Africa</Link></li>
+                <li><Link href="/website-maintenance">Website Maintenance</Link></li>
                 <li><Link href="/audit">Website Audits</Link></li>
                 <li><Link href="/seo">SEO & Growth</Link></li>
               </ul>
@@ -44,14 +46,15 @@ export function Footer() {
                 <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
                 <li><a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                <li><a href={config.contact.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
               </ul>
             </div>
 
             <div>
               <div className="footer-col-title">Legal</div>
               <ul className="footer-links">
-                <li><Link href="/">Privacy Policy</Link></li>
-                <li><Link href="/">Terms of Service</Link></li>
+                <li><Link href="/privacy">Privacy Policy</Link></li>
+                <li><Link href="/terms">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
@@ -59,8 +62,9 @@ export function Footer() {
           <div className="footer-bottom">
             <p>© {currentYear} InkwellCX. All rights reserved.</p>
             <div className="footer-bottom-links">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
+              <a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href={config.contact.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
           </div>
         </div>
@@ -90,6 +94,8 @@ export function Footer() {
             <div className="footer-col-title">Services</div>
             <ul className="footer-links">
               <li><Link href="/services">Design & Development</Link></li>
+              <li><Link href="/web-design-south-africa">Web Design South Africa</Link></li>
+              <li><Link href="/website-maintenance">Website Maintenance</Link></li>
               <li><Link href="/audit">Website Audits</Link></li>
               <li><Link href="/seo">SEO & Growth</Link></li>
             </ul>
@@ -101,14 +107,15 @@ export function Footer() {
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact</Link></li>
               <li><a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href={config.contact.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
 
           <div>
             <div className="footer-col-title">Legal</div>
             <ul className="footer-links">
-              <li><Link href="/">Privacy Policy</Link></li>
-              <li><Link href="/">Terms of Service</Link></li>
+              <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/terms">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
@@ -116,8 +123,9 @@ export function Footer() {
         <div className="footer-bottom">
           <p>© {currentYear} InkwellCX. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
+            <a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href={config.contact.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
         </div>
       </div>

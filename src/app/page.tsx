@@ -2,18 +2,40 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { config } from '@/config/constants';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema, serviceSchema } from '@/lib/seo';
+import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'InkwellCX - High-Converting Websites & Web Design Services',
-  description: 'High-converting websites built with design, hosting, SEO & analytics. Turn visitors into paying customers.',
+  title: 'High-Converting Websites & Web Design Services',
+  description: site.description,
   alternates: {
-    canonical: 'https://inkwellcx.com',
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'InkwellCX - High-Converting Websites & Web Design Services',
+    description: site.description,
+    url: '/',
+  },
+  twitter: {
+    title: 'InkwellCX - High-Converting Websites & Web Design Services',
+    description: site.description,
   },
 };
 
 export default function Home() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={[
+          breadcrumbSchema([{ name: 'Home', path: '/' }]),
+          serviceSchema(
+            'Website Design and SEO Services',
+            'High-converting website design, SEO, hosting, audits, analytics, and ongoing website optimisation.',
+            '/',
+          ),
+        ]}
+      />
       {/* Page Hero */}
       <section
         style={{
@@ -80,7 +102,7 @@ export default function Home() {
           <div className="metric-label">client retention</div>
         </div>
         <div className="metric-cell">
-          <div className="metric-num">30+</div>
+          <div className="metric-num">50+</div>
           <div className="metric-label">sites built</div>
         </div>
       </div>

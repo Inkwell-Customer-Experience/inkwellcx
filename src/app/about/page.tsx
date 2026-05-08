@@ -1,12 +1,14 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'About InkwellCX — Web Design Agency South Africa | Who We Are',
   description: 'About InkwellCX: South Africa–based web design and digital marketing agency building high-converting websites for ambitious businesses.',
   alternates: {
-    canonical: 'https://inkwellcx.com/about',
+    canonical: 'https://inkwellcx.com/about/',
   },
 };
 
@@ -15,6 +17,12 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 export default function About() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about/' },
+        ])}
+      />
       <section className="page-hero">
         <div className="container">
           <span className="page-tag">// about inkwellcx</span>

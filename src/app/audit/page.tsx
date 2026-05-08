@@ -1,12 +1,16 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { FAQSection } from '@/components/FAQSection';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
+import { auditFaqs } from '@/lib/faqs';
 
 export const metadata: Metadata = {
   title: 'Free Website Audit — InkwellCX | Performance & SEO Analysis',
   description: 'Free website audit including performance analysis, SEO issues, conversion optimization, and UX review. Identify what\'s holding your site back.',
   alternates: {
-    canonical: 'https://inkwellcx.com/audit',
+    canonical: 'https://inkwellcx.com/audit/',
   },
 };
 
@@ -15,6 +19,20 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 export default function Audit() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={[
+          serviceSchema(
+            'Website Audit',
+            'Website performance, SEO, UX, security, mobile, and conversion audit with clear improvement priorities.',
+            '/audit/',
+          ),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Website Audit', path: '/audit/' },
+          ]),
+          faqSchema(auditFaqs),
+        ]}
+      />
       <section className="page-hero">
         <div className="container">
           <span className="page-tag">// website audit</span>
@@ -87,6 +105,8 @@ export default function Audit() {
           <a href="/contact" className="btn-primary">Start Your Audit</a>
         </div>
       </section>
+
+      <FAQSection faqs={auditFaqs} />
     </main>
   );
 }

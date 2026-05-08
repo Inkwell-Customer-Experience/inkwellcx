@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from './ThemeContext';
 import Image from 'next/image';
 
@@ -12,10 +12,12 @@ export function Navbar() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', () => setScrolled(window.scrollY > 10));
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const isActive = (path: string) => pathname === path;
 
@@ -49,10 +51,10 @@ export function Navbar() {
           {/* Desktop nav */}
           <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 4 }} aria-label="Main navigation">
             {[
-              { path: '/services', label: '/services' },
-              { path: '/audit', label: '/audit' },
-              { path: '/seo', label: '/seo' },
-              { path: '/about', label: '/about' },
+              { path: '/services', label: 'Services' },
+              { path: '/audit', label: 'Website Audit' },
+              { path: '/seo', label: 'SEO Services' },
+              { path: '/about', label: 'About' },
             ].map(({ path, label }) => (
               <Link
                 key={path}
