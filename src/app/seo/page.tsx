@@ -1,12 +1,16 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { FAQSection } from '@/components/FAQSection';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
+import { seoFaqs } from '@/lib/faqs';
 
 export const metadata: Metadata = {
   title: 'SEO Services & Growth Strategy — InkwellCX | Organic Traffic',
   description: 'SEO services combining technical optimization, content strategy, and local search. Increase organic traffic and rank higher on Google.',
   alternates: {
-    canonical: 'https://inkwellcx.com/seo',
+    canonical: 'https://inkwellcx.com/seo/',
   },
 };
 
@@ -15,6 +19,20 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 export default function SEO() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={[
+          serviceSchema(
+            'SEO Services',
+            'Technical SEO, content strategy, local search optimisation, and organic growth support for South African businesses.',
+            '/seo/',
+          ),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'SEO Services', path: '/seo/' },
+          ]),
+          faqSchema(seoFaqs),
+        ]}
+      />
       <section className="page-hero">
         <div className="container">
           <span className="page-tag">// seo & growth</span>
@@ -72,6 +90,8 @@ export default function SEO() {
           <a href="/contact" className="btn-primary">Let's Talk SEO</a>
         </div>
       </section>
+
+      <FAQSection faqs={seoFaqs} />
     </main>
   );
 }

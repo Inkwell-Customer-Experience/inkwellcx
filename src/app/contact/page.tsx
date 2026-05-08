@@ -3,12 +3,14 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
 import { config } from '@/config/constants';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contact — Get in Touch with InkwellCX | Web Design Agency',
   description: 'Contact InkwellCX for web design, SEO, and digital marketing services. Get a free consultation and discuss your next project.',
   alternates: {
-    canonical: 'https://inkwellcx.com/contact',
+    canonical: 'https://inkwellcx.com/contact/',
   },
 };
 
@@ -17,6 +19,12 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 export default function Contact() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact/' },
+        ])}
+      />
       <section className="page-hero">
         <div className="container">
           <span className="page-tag">// let's talk</span>
@@ -48,6 +56,13 @@ export default function Contact() {
                   <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: 8 }}>WhatsApp</div>
                   <a href={config.contact.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
                     +27 71 092 1755
+                  </a>
+                </div>
+
+                <div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: 8 }}>Instagram</div>
+                  <a href={config.contact.instagramUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue-link)', textDecoration: 'none' }}>
+                    @inkwell_cx
                   </a>
                 </div>
 

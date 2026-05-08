@@ -6,29 +6,51 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GridBackground } from '@/components/GridBackground';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { StructuredData } from '@/components/StructuredData';
+import { organizationSchema } from '@/lib/seo';
+import { site } from '@/lib/site';
 
 const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], display: 'swap' })
 const syne = Syne({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
-  title: 'InkwellCX - High-Converting Websites & Web Design Services',
-  description: 'High-converting websites built with design, hosting, SEO & analytics. Websites that turn visitors into paying customers.',
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
+  title: {
+    default: 'InkwellCX - High-Converting Websites & Web Design Services',
+    template: '%s | InkwellCX',
+  },
+  description: site.description,
+  keywords: [
+    'web design South Africa',
+    'website design',
+    'SEO services',
+    'website maintenance',
+    'website audits',
+    'conversion optimisation',
+    'small business websites',
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: 'Web Design',
   alternates: {
-    canonical: 'https://inkwellcx.com',
+    canonical: '/',
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: [{ url: '/favicon.webp', type: 'image/webp' }],
   },
   openGraph: {
     title: 'InkwellCX - High-Converting Websites & Web Design Services',
-    description: 'High-converting websites built with design, hosting, SEO & analytics. Websites that turn visitors into paying customers.',
-    url: 'https://inkwellcx.com',
-    siteName: 'InkwellCX',
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
     images: [
       {
-        url: 'https://inkwellcx.com/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
+        alt: 'InkwellCX - Websites that convert',
       },
     ],
     locale: 'en_US',
@@ -37,8 +59,19 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'InkwellCX - High-Converting Websites & Web Design Services',
-    description: 'High-converting websites built with design, hosting, SEO & analytics.',
-    images: ['https://inkwellcx.com/og-image.png'],
+    description: site.description,
+    images: ['/opengraph-image'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
 };
 
@@ -52,11 +85,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/webp" href="/favicon.webp" />
         {/* Optimize theme injection to prevent flash */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -67,50 +98,7 @@ export default function RootLayout({
             } catch (e) {}
           `
         }} />
-        {/* Schema.org structured data for rich results */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'InkwellCX',
-              url: 'https://inkwellcx.com',
-              logo: 'https://inkwellcx.com/logo-dark.svg',
-              description: 'High-converting websites built with design, hosting, SEO & analytics.',
-              sameAs: [
-                'https://twitter.com/inkwellcx',
-                'https://linkedin.com/company/inkwellcx',
-              ],
-              contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'Customer Service',
-                url: 'https://inkwellcx.com/contact',
-              },
-              offers: {
-                '@type': 'AggregateOffer',
-                priceCurrency: 'USD',
-                offers: [
-                  {
-                    '@type': 'Offer',
-                    name: 'Web Design Services',
-                    description: 'Custom high-converting website design',
-                  },
-                  {
-                    '@type': 'Offer',
-                    name: 'SEO Optimization',
-                    description: 'Search engine optimization services',
-                  },
-                  {
-                    '@type': 'Offer',
-                    name: 'Website Audit',
-                    description: 'Comprehensive website performance audit',
-                  },
-                ],
-              },
-            })
-          }}
-        />
+        <StructuredData data={organizationSchema()} />
       </head>
       <body className={`${syne.className} ${spaceMono.className}`}>
         <ThemeProvider>

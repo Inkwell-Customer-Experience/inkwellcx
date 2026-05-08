@@ -2,12 +2,16 @@ export const dynamic = 'force-static';
 
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { FAQSection } from '@/components/FAQSection';
+import { StructuredData } from '@/components/StructuredData';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
+import { webDesignFaqs } from '@/lib/faqs';
 
 export const metadata: Metadata = {
   title: 'Web Design & Services — InkwellCX | Custom Website Development',
   description: 'Custom web design and development services. Entry-level to advanced websites optimized for conversions. Affordable packages starting at R999.',
   alternates: {
-    canonical: 'https://inkwellcx.com/services',
+    canonical: 'https://inkwellcx.com/services/',
   },
 };
 
@@ -81,6 +85,20 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 export default function Services() {
   return (
     <main className="page-fade-in">
+      <StructuredData
+        data={[
+          serviceSchema(
+            'Web Design and Website Management Services',
+            'Custom website design, development, hosting, website audits, SEO, analytics, and monthly optimisation services.',
+            '/services/',
+          ),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services/' },
+          ]),
+          faqSchema(webDesignFaqs),
+        ]}
+      />
       {/* Page Hero */}
       <section className="page-hero">
         <div className="container">
@@ -227,6 +245,8 @@ export default function Services() {
           </p>
         </div>
       </section>
+
+      <FAQSection faqs={webDesignFaqs} />
     </main>
   );
 }
