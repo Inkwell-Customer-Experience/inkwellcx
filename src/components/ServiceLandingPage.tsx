@@ -28,7 +28,7 @@ export function ServiceLandingPage({
   faqs,
 }: ServiceLandingPageProps) {
   return (
-    <main className="page-fade-in">
+    <main id="main-content" className="page-fade-in">
       <StructuredData
         data={[
           serviceSchema(serviceName, serviceDescription, path),

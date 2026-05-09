@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { FAQSection } from '@/components/FAQSection';
 import { StructuredData } from '@/components/StructuredData';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
@@ -18,7 +19,7 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 
 export default function SEO() {
   return (
-    <main className="page-fade-in">
+    <main id="main-content" className="page-fade-in">
       <StructuredData
         data={[
           serviceSchema(
@@ -43,7 +44,7 @@ export default function SEO() {
             We combine technical SEO, content strategy, and local search optimization to bring in the customers actually looking for you.
           </p>
           <div style={{ marginTop: 36 }}>
-            <a href="/contact" className="btn-primary">Start Growing →</a>
+            <Link href="/contact" className="btn-primary">Start Growing →</Link>
           </div>
         </div>
       </section>
@@ -53,7 +54,7 @@ export default function SEO() {
           <span className="page-tag">// our approach</span>
           <h2 className="section-headline" style={{ marginBottom: 40 }}>Three pillars of growth.</h2>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 40 }}>
+          <div className="seo-pillars-grid">
             {[
               {
                 num: '01',
@@ -87,7 +88,7 @@ export default function SEO() {
           <p className="body-copy" style={{ marginBottom: 32, maxWidth: 500, margin: '0 auto 32px' }}>
             Let's audit your current SEO and build a strategy that drives real growth.
           </p>
-          <a href="/contact" className="btn-primary">Let's Talk SEO</a>
+          <Link href="/contact" className="btn-primary">Let's Talk SEO</Link>
         </div>
       </section>
 

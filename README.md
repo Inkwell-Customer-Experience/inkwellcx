@@ -28,6 +28,21 @@ npm run start
 
 The project is optimized for deployment on Vercel with automatic deployments from the main branch.
 
+### Environment Variables
+
+Contact form delivery runs through the server-side `/api/contact/` route. Configure these in Vercel:
+
+```bash
+EMAILJS_SERVICE_ID=
+EMAILJS_TEMPLATE_ID=
+EMAILJS_PUBLIC_KEY=
+EMAILJS_PRIVATE_KEY= # optional, if enabled in EmailJS
+NEXT_PUBLIC_WHATSAPP_PHONE=
+NEXT_PUBLIC_CONTACT_EMAIL=
+```
+
+`NEXT_PUBLIC_*` values are public browser config. Keep provider secrets in non-public variables.
+
 ## Project Structure
 
 ```

@@ -6,9 +6,4 @@ export const config = {
     whatsappUrl: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '27710921755'}`,
     instagramUrl: 'https://www.instagram.com/inkwell_cx/',
   },
-  emailjs: {
-    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
-  },
 };

@@ -38,7 +38,7 @@ function TermsList({ items }: { items: string[] }) {
 
 export default function TermsOfService() {
   return (
-    <main className="page-fade-in">
+    <main id="main-content" className="page-fade-in">
       <StructuredData
         data={breadcrumbSchema([
           { name: 'Home', path: '/' },

@@ -13,7 +13,10 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 10;
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -60,6 +63,7 @@ export function Navbar() {
                 key={path}
                 href={path}
                 className={isActive(path) ? 'nav-link active' : 'nav-link'}
+                aria-current={isActive(path) ? 'page' : undefined}
               >
                 {label}
               </Link>
@@ -85,6 +89,8 @@ export function Navbar() {
               style={{ background: 'none', border: 'none', color: 'var(--text)', fontSize: 22, cursor: 'pointer' }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle mobile menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileOpen ? '✕' : '☰'}
             </button>
@@ -94,9 +100,9 @@ export function Navbar() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="mobile-nav-panel">
+        <div className="mobile-nav-panel" id="mobile-navigation">
           <div className="container">
-            <div className="mobile-nav-items">
+            <nav className="mobile-nav-items" aria-label="Mobile navigation">
               {[
                 { path: '/', label: 'Home' },
                 { path: '/services', label: 'Services' },
@@ -109,12 +115,13 @@ export function Navbar() {
                   key={path}
                   href={path}
                   className={isActive(path) ? 'nav-link active' : 'nav-link'}
+                  aria-current={isActive(path) ? 'page' : undefined}
                   onClick={() => setMobileOpen(false)}
                 >
                   {label}
                 </Link>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
       )}
