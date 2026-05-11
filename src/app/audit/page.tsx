@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { FAQSection } from '@/components/FAQSection';
 import { StructuredData } from '@/components/StructuredData';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
@@ -18,7 +19,7 @@ export const viewport = 'width=device-width, initial-scale=1.0';
 
 export default function Audit() {
   return (
-    <main className="page-fade-in">
+    <main id="main-content" className="page-fade-in">
       <StructuredData
         data={[
           serviceSchema(
@@ -43,7 +44,7 @@ export default function Audit() {
             Our detailed audit uncovers speed issues, conversion killers, SEO problems, and UX flaws. You'll get a clear roadmap of what's broken and how to fix it.
           </p>
           <div style={{ marginTop: 36 }}>
-            <a href="/contact" className="btn-primary">Get Your Audit →</a>
+            <Link href="/contact" className="btn-primary">Get Your Audit →</Link>
           </div>
         </div>
       </section>
@@ -102,7 +103,7 @@ export default function Audit() {
           <p className="body-copy" style={{ marginBottom: 32, maxWidth: 500, margin: '0 auto 32px' }}>
             Get a comprehensive audit and actionable recommendations in 48 hours.
           </p>
-          <a href="/contact" className="btn-primary">Start Your Audit</a>
+          <Link href="/contact" className="btn-primary">Start Your Audit</Link>
         </div>
       </section>
 

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: [{ url: '/favicon.webp', type: 'image/webp' }],
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' }],
   },
   openGraph: {
     title: 'InkwellCX - High-Converting Websites & Web Design Services',
@@ -87,7 +87,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" type="image/webp" href="/favicon.webp" />
+        <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
         {/* Optimize theme injection to prevent flash */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -105,6 +105,9 @@ export default function RootLayout({
           <GridBackground />
           <div style={{ position: 'relative', minHeight: '100vh' }}>
             <div className="page-wrapper">
+              <a href="#main-content" className="skip-link">
+                Skip to main content
+              </a>
               <Navbar />
               {children}
               <SpeedInsights />

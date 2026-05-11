@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { config } from '@/config/constants';
 import { StructuredData } from '@/components/StructuredData';
 import { breadcrumbSchema, serviceSchema } from '@/lib/seo';
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="page-fade-in">
+    <main id="main-content" className="page-fade-in">
       <StructuredData
         data={[
           breadcrumbSchema([{ name: 'Home', path: '/' }]),
@@ -66,9 +67,9 @@ export default function Home() {
           </p>
 
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 64 }}>
-            <a href="/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get a Free Audit →
-            </a>
+            </Link>
             <a href={config.contact.whatsappUrl} className="btn-ghost" target="_blank" rel="noopener noreferrer">
               💬 WhatsApp Us
             </a>
